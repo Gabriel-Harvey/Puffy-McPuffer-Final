@@ -218,7 +218,11 @@ PrefabInstance:
     - target: {fileID: 6843027420135130100, guid: 6bd6c87dde95bd94c9451df3d171cd6f, type: 3}
       propertyPath: boat
       value: 
-      objectReference: {fileID: 6707948935959248350}
+      objectReference: {fileID: 6707948935959248349}
+    - target: {fileID: 6843027420135130100, guid: 6bd6c87dde95bd94c9451df3d171cd6f, type: 3}
+      propertyPath: collectDist
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6843027420135130101, guid: 6bd6c87dde95bd94c9451df3d171cd6f, type: 3}
       propertyPath: m_Name
       value: Crate (2)
@@ -2168,6 +2172,7 @@ MonoBehaviour:
   locked: 0
   rotateSpeed: 0
   questScore: 0
+  collectDist: 0
 --- !u!4 &716528093 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9ef02e6b05c59f04a9bd8afb5b96e052, type: 3}
@@ -3124,6 +3129,7 @@ MonoBehaviour:
   locked: 0
   rotateSpeed: 0
   questScore: 0
+  collectDist: 0
 --- !u!4 &957657071 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9ef02e6b05c59f04a9bd8afb5b96e052, type: 3}
@@ -3889,6 +3895,7 @@ MonoBehaviour:
   locked: 0
   rotateSpeed: 0
   questScore: 0
+  collectDist: 0
 --- !u!4 &1130049150 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9ef02e6b05c59f04a9bd8afb5b96e052, type: 3}
@@ -5093,7 +5100,11 @@ PrefabInstance:
     - target: {fileID: 6843027420135130100, guid: 6bd6c87dde95bd94c9451df3d171cd6f, type: 3}
       propertyPath: boat
       value: 
-      objectReference: {fileID: 6707948935959248350}
+      objectReference: {fileID: 6707948935959248349}
+    - target: {fileID: 6843027420135130100, guid: 6bd6c87dde95bd94c9451df3d171cd6f, type: 3}
+      propertyPath: collectDist
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6843027420135130101, guid: 6bd6c87dde95bd94c9451df3d171cd6f, type: 3}
       propertyPath: m_Name
       value: Crate
@@ -5427,7 +5438,11 @@ PrefabInstance:
     - target: {fileID: 6843027420135130100, guid: 6bd6c87dde95bd94c9451df3d171cd6f, type: 3}
       propertyPath: boat
       value: 
-      objectReference: {fileID: 6707948935959248350}
+      objectReference: {fileID: 6707948935959248349}
+    - target: {fileID: 6843027420135130100, guid: 6bd6c87dde95bd94c9451df3d171cd6f, type: 3}
+      propertyPath: collectDist
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6843027420135130101, guid: 6bd6c87dde95bd94c9451df3d171cd6f, type: 3}
       propertyPath: m_Name
       value: Crate (1)
@@ -7237,6 +7252,7 @@ MonoBehaviour:
   currentHarpoon: {fileID: 0}
   spawnPoint: {fileID: 6707948936291716533}
   readyToFire: 1
+  harpoonMaxDist: 150
   launchSpeed: 200
   returnSpeed: 200
   hit: 0
@@ -7429,6 +7445,7 @@ MonoBehaviour:
   cameraAim: {fileID: 6707948934926893533}
   radius: 2.75
   height: 10.58
+  toggle: 0
 --- !u!54 &6707948935959248337
 Rigidbody:
   m_ObjectHideFlags: 0
