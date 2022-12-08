@@ -8,6 +8,7 @@ public class PurpleBoatRacing : MonoBehaviour
     public GameObject interactImage;
     public Transform transformPlayer;
     public BoatMovement playerRaceCondition;
+    public Waypoint waypointMark;
     public float raceSpeed = 30f;
     public float raceTurnSpeed = 20f;
     public float countdown = 5f;
@@ -18,6 +19,7 @@ public class PurpleBoatRacing : MonoBehaviour
     public bool finishedQuest = false;
     public bool startCounter = false;
     public bool checkpointPassed = false;
+    public bool testBool;
     public GameObject raceGoal;
     public GameObject startPos;
     public GameObject[] waypoints;
@@ -30,7 +32,7 @@ public class PurpleBoatRacing : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       // raceGoal.SetActive(false);
+        // raceGoal.SetActive(false);        
     }
 
     // Update is called once per frame
@@ -46,6 +48,10 @@ public class PurpleBoatRacing : MonoBehaviour
                 ,raceTurnSpeed * Time.deltaTime);
             }
         }
+
+        waypointMark.RaceWaypoint();
+        
+
         if(raceAllowed == false && Vector3.Distance(transform.position, transformPlayer.position) < 20)
         {
             if (playerRaceCondition.wonRace == false)
@@ -56,7 +62,6 @@ public class PurpleBoatRacing : MonoBehaviour
                     startCounter = true;
 
                     interactImage.SetActive(false);
-                    // raceGoal.SetActive(true);
                     StartCoroutine(Wait());
                 }
                 if (startCounter == true)
@@ -82,7 +87,7 @@ public class PurpleBoatRacing : MonoBehaviour
         if(raceAllowed == true || Vector3.Distance(transform.position, transformPlayer.position) > 20)
         {
             interactImage.SetActive(false);
-        } 
+        }
 
         if (reachedPoint == true)
         {
