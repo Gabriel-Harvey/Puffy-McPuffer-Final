@@ -6544,6 +6544,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2090908368}
     - target: {fileID: 8146035300852854418, guid: 7b5f2e9c7d2912649a11b9806499728e, type: 3}
+      propertyPath: waypointRadius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8146035300852854418, guid: 7b5f2e9c7d2912649a11b9806499728e, type: 3}
       propertyPath: transformPlayer
       value: 
       objectReference: {fileID: 6707948935959248350}
@@ -6551,6 +6555,22 @@ PrefabInstance:
       propertyPath: playerRaceCondition
       value: 
       objectReference: {fileID: 6707948935959248341}
+    - target: {fileID: 8146035300852854418, guid: 7b5f2e9c7d2912649a11b9806499728e, type: 3}
+      propertyPath: waypoints.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8146035300852854418, guid: 7b5f2e9c7d2912649a11b9806499728e, type: 3}
+      propertyPath: waypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 477748883}
+    - target: {fileID: 8146035300852854418, guid: 7b5f2e9c7d2912649a11b9806499728e, type: 3}
+      propertyPath: waypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1846435553}
+    - target: {fileID: 8146035300852854418, guid: 7b5f2e9c7d2912649a11b9806499728e, type: 3}
+      propertyPath: waypoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 1434587190}
     - target: {fileID: 8146035300852854419, guid: 7b5f2e9c7d2912649a11b9806499728e, type: 3}
       propertyPath: m_Name
       value: Brown Boat

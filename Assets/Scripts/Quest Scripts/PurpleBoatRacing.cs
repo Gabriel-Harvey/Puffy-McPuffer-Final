@@ -9,20 +9,18 @@ public class PurpleBoatRacing : MonoBehaviour
     public Transform transformPlayer;
     public BoatMovement playerRaceCondition;
     public float raceSpeed = 30f;
-    public float raceSmoothTime = 0.5f;
     public float raceTurnSpeed = 20f;
     public float countdown = 5f;
+    public float waypointRadius;
     public int countdownInt;
+    public int current = 0;
     public bool reachedPoint = false;
     public bool finishedQuest = false;
-    public bool turn = false;
     public bool startCounter = false;
     public bool checkpointPassed = false;
     public GameObject raceGoal;
     public GameObject startPos;
-    public GameObject levelGoal;
-    public GameObject checkpointOne;
-    public GameObject checkpointTwo;
+    public GameObject[] waypoints;
     Vector3 velocityBoat;
 
     [SerializeField]
@@ -42,7 +40,7 @@ public class PurpleBoatRacing : MonoBehaviour
         {
             if (reachedPoint == false)
             {
-                transform.position = Vector3.SmoothDamp(transform.position, raceGoal.transform.position, ref velocityBoat, raceSmoothTime, raceSpeed);
+                transform.position = Vector3.MoveTowards(transform.position, raceGoal.transform.position, Time.deltaTime * raceSpeed);
                 transform.rotation = Quaternion.Slerp(transform.rotation
                 ,Quaternion.LookRotation(raceGoal.transform.position - transform.position)
                 ,raceTurnSpeed * Time.deltaTime);
@@ -95,19 +93,7 @@ public class PurpleBoatRacing : MonoBehaviour
         {
             raceGoal.SetActive(false);
             raceAllowed = false;
-            CheckForGoal();
-        }
-    }
-
-    public void CheckForGoal()
-    {
-        if (checkpointPassed == false)
-        {
             StartCoroutine(Lost());
-        }
-        else
-        {
-            StopCoroutine(CheckpointTwoGo());
         }
     }
 
@@ -123,34 +109,23 @@ public class PurpleBoatRacing : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         //insert point for where boat should go when done
-        transform.position = Vector3.SmoothDamp(transform.position, checkpointOne.transform.position, ref velocityBoat, raceSmoothTime, raceSpeed);
+        if (Vector3.Distance(waypoints[current].transform.position, transform.position) < waypointRadius)
+        {
+            current++;
+            if(current == waypoints.Length)
+            {
+                StopCoroutine(Lost());
+            }
+        }
+        transform.position = Vector3.MoveTowards(transform.position, waypoints[current].transform.position, Time.deltaTime * raceSpeed);
         transform.rotation = Quaternion.Slerp(transform.rotation
-                , Quaternion.LookRotation(checkpointOne.transform.position - transform.position)
-                , raceTurnSpeed * Time.deltaTime);
-    }
-
-    public IEnumerator CheckpointTwoGo()
-    {
-        yield return new WaitForSeconds(0.1f);
-        transform.position = Vector3.SmoothDamp(transform.position, checkpointTwo.transform.position, ref velocityBoat, raceSmoothTime, raceSpeed);
-        transform.rotation = Quaternion.Slerp(transform.rotation
-                , Quaternion.LookRotation(checkpointTwo.transform.position - transform.position)
-                , raceTurnSpeed * Time.deltaTime);
-    }
-
-    public IEnumerator FinishGoalGo()
-    {
-        StopCoroutine(CheckpointTwoGo());
-        yield return new WaitForSeconds(0.1f);
-        transform.position = Vector3.SmoothDamp(transform.position, levelGoal.transform.position, ref velocityBoat, raceSmoothTime, raceSpeed);
-        transform.rotation = Quaternion.Slerp(transform.rotation
-                , Quaternion.LookRotation(levelGoal.transform.position - transform.position)
+                , Quaternion.LookRotation(waypoints[current].transform.position - transform.position)
                 , raceTurnSpeed * Time.deltaTime);
     }
 
     public IEnumerator StartAgain()
     {
-        transform.position = Vector3.SmoothDamp(transform.position, startPos.transform.position, ref velocityBoat, raceSmoothTime, raceSpeed);
+        transform.position = Vector3.MoveTowards(transform.position, startPos.transform.position, Time.deltaTime * raceSpeed);
         transform.rotation = Quaternion.Slerp(transform.rotation
                 , Quaternion.LookRotation(startPos.transform.position - transform.position)
                 , raceTurnSpeed * Time.deltaTime);
@@ -171,21 +146,6 @@ public class PurpleBoatRacing : MonoBehaviour
         {
             other.gameObject.GetComponent<DialogueTrigger>().TriggerDialogue();
             reachedPoint = true;
-        }
-
-        if (other.tag == "Checkpoint 1")
-        {
-            checkpointPassed = true;          
-        }
-
-        if (other.tag == "Checkpoint 2")
-        {
-            StartCoroutine(FinishGoalGo());
-        }
-
-        if (other.tag == "Finish")
-        {
-            finishedQuest = true;
         }
     }
 }
