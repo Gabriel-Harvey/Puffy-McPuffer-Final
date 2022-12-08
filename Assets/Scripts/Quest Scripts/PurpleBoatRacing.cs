@@ -19,7 +19,7 @@ public class PurpleBoatRacing : MonoBehaviour
     public bool finishedQuest = false;
     public bool startCounter = false;
     public bool checkpointPassed = false;
-    public bool testBool;
+    public bool waypointActivated;
     public GameObject raceGoal;
     public GameObject startPos;
     public GameObject[] waypoints;
@@ -32,74 +32,78 @@ public class PurpleBoatRacing : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // raceGoal.SetActive(false);        
+        // raceGoal.SetActive(false);
+        waypointActivated = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (raceAllowed == true)
+        if(playerRaceCondition.rubbleTriggered == true)
         {
-            if (reachedPoint == false)
+            waypointActivated = true;
+            waypointMark.RaceWaypoint();
+
+            if (raceAllowed == true)
             {
-                transform.position = Vector3.MoveTowards(transform.position, raceGoal.transform.position, Time.deltaTime * raceSpeed);
-                transform.rotation = Quaternion.Slerp(transform.rotation
-                ,Quaternion.LookRotation(raceGoal.transform.position - transform.position)
-                ,raceTurnSpeed * Time.deltaTime);
-            }
-        }
-
-        waypointMark.RaceWaypoint();
-        
-
-        if(raceAllowed == false && Vector3.Distance(transform.position, transformPlayer.position) < 20)
-        {
-            if (playerRaceCondition.wonRace == false)
-            {
-                interactImage.SetActive(true);
-                if (Input.GetKeyDown(raceButton))
+                if (reachedPoint == false)
                 {
-                    startCounter = true;
-
-                    interactImage.SetActive(false);
-                    StartCoroutine(Wait());
-                }
-                if (startCounter == true)
-                {
-                    raceUI.countdownRace.enabled = true;
-                    if (countdown >= 0)
-
-                        countdown -= Time.deltaTime;
-                    countdownInt = Mathf.RoundToInt(countdown);
-                    raceUI.countdownRace.text = "Race starts in... " + countdownInt.ToString() + "!";
-                }
-                else
-                {
-                    
-                    
-                    countdown = 5;
+                    transform.position = Vector3.MoveTowards(transform.position, raceGoal.transform.position, Time.deltaTime * raceSpeed);
+                    transform.rotation = Quaternion.Slerp(transform.rotation
+                    , Quaternion.LookRotation(raceGoal.transform.position - transform.position)
+                    , raceTurnSpeed * Time.deltaTime);
                 }
             }
-        }
-                
             
-        
-        if(raceAllowed == true || Vector3.Distance(transform.position, transformPlayer.position) > 20)
-        {
-            interactImage.SetActive(false);
-        }
+            if (raceAllowed == false && Vector3.Distance(transform.position, transformPlayer.position) < 20)
+            {
+                if (playerRaceCondition.wonRace == false)
+                {
+                    interactImage.SetActive(true);
+                    if (Input.GetKeyDown(raceButton))
+                    {
+                        startCounter = true;
 
-        if (reachedPoint == true)
-        {
-            raceGoal.SetActive(false);
-            StartCoroutine(StartAgain());
+                        interactImage.SetActive(false);
+                        StartCoroutine(Wait());
+                    }
+                    if (startCounter == true)
+                    {
+                        raceUI.countdownRace.enabled = true;
+                        if (countdown >= 0)
+
+                            countdown -= Time.deltaTime;
+                        countdownInt = Mathf.RoundToInt(countdown);
+                        raceUI.countdownRace.text = "Race starts in... " + countdownInt.ToString() + "!";
+                    }
+                    else
+                    {
+
+
+                        countdown = 5;
+                    }
+                }
+            }
+
+            if (raceAllowed == true || Vector3.Distance(transform.position, transformPlayer.position) > 20)
+            {
+                interactImage.SetActive(false);
+                waypointActivated = false;
+            }
+
+            if (reachedPoint == true)
+            {
+                raceGoal.SetActive(false);
+                StartCoroutine(StartAgain());
+            }
+            if (playerRaceCondition.wonRace == true)
+            {
+                raceGoal.SetActive(false);
+                raceAllowed = false;
+                StartCoroutine(Lost());
+            }
         }
-        if (playerRaceCondition.wonRace == true)
-        {
-            raceGoal.SetActive(false);
-            raceAllowed = false;
-            StartCoroutine(Lost());
-        }
+        
     }
 
     public IEnumerator Wait()
@@ -117,7 +121,7 @@ public class PurpleBoatRacing : MonoBehaviour
         if (Vector3.Distance(waypoints[current].transform.position, transform.position) < waypointRadius)
         {
             current++;
-            if(current == waypoints.Length)
+            if (current == waypoints.Length)
             {
                 StopCoroutine(Lost());
             }
@@ -139,9 +143,10 @@ public class PurpleBoatRacing : MonoBehaviour
 
         reachedPoint = false;
         raceAllowed = false;
-            transform.rotation = Quaternion.Slerp(transform.rotation
-                , Quaternion.LookRotation(raceGoal.transform.position - transform.position)
-                , raceTurnSpeed * Time.deltaTime);
+        waypointActivated = false;
+        transform.rotation = Quaternion.Slerp(transform.rotation
+            , Quaternion.LookRotation(raceGoal.transform.position - transform.position)
+            , raceTurnSpeed * Time.deltaTime);
         StopCoroutine(StartAgain());
     }
 

@@ -9,7 +9,10 @@ public class GreenBoatFollow : MonoBehaviour
     public Transform transformPlayer;
     public bool followAllowed = false;
     public bool reachedPoint = false;
+    public bool waypointActivated;
     public GameObject interactImage;
+    public BoatMovement questTrigger;
+    public Waypoint waypointMark;
 
     [SerializeField]
     private KeyCode followButton;
@@ -17,36 +20,43 @@ public class GreenBoatFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        waypointActivated = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (followAllowed == true)
+        if (questTrigger.rubbleTriggered == true)
         {
-            if (Vector3.Distance(transform.position, transformPlayer.position) < 30 && Vector3.Distance(transform.position, transformPlayer.position) > 10)
+            waypointActivated = true;
+            waypointMark.FollowWaypoint();
+
+            if (followAllowed == true)
             {
-                if (reachedPoint == false)
+                waypointActivated = false;
+                if (Vector3.Distance(transform.position, transformPlayer.position) < 30 && Vector3.Distance(transform.position, transformPlayer.position) > 10)
                 {
-                    Follow();
+                    if (reachedPoint == false)
+                    {
+                        Follow();
+                    }
                 }
             }
-        }
-        if (Vector3.Distance(transform.position, transformPlayer.position) < 20 && followAllowed == false)
-        {
-            interactImage.SetActive(true);
-            if (Input.GetKeyDown(followButton))
+            if (Vector3.Distance(transform.position, transformPlayer.position) < 20 && followAllowed == false)
+            {
+                interactImage.SetActive(true);
+                if (Input.GetKeyDown(followButton))
+                {
+                    interactImage.SetActive(false);
+                    GetComponent<DialogueTrigger>().TriggerDialogue();
+                    followAllowed = true;
+                }
+
+            }
+            if (Vector3.Distance(transform.position, transformPlayer.position) > 20 || followAllowed == true)
             {
                 interactImage.SetActive(false);
-                GetComponent<DialogueTrigger>().TriggerDialogue();
-                followAllowed = true;
             }
-           
-        }
-        if(Vector3.Distance(transform.position, transformPlayer.position) > 20 || followAllowed == true)
-        {
-            interactImage.SetActive(false);
         }
     }
 

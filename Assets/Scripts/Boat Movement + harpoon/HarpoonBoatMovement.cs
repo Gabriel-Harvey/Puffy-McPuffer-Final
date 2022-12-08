@@ -9,7 +9,7 @@ public class HarpoonBoatMovement : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private GameObject harpoon;
     [SerializeField] private float speed;
-    public bool moving;
+    [HideInInspector] public bool moving;
     public float rotateSpeed = 5f;
 
     [Header("Collider Management")]
@@ -18,7 +18,6 @@ public class HarpoonBoatMovement : MonoBehaviour
     private bool created;
     [SerializeField] private float radius;
     [SerializeField] private float height;
-    public bool toggle;
 
 
     void Update()
@@ -33,12 +32,12 @@ public class HarpoonBoatMovement : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
         }
 
-        if (cameraAim.readyToFire == true && created == true )
+        if (cameraAim.readyToFire == true && created == true)
         {
             Destroy(GetComponent<CapsuleCollider>());
             created = false;
         }
-        else if (cameraAim.readyToFire == false && created == false )
+        else if (cameraAim.readyToFire == false && created == false)
         {
             collider = gameObject.AddComponent<CapsuleCollider>();
             collider.direction = 2;

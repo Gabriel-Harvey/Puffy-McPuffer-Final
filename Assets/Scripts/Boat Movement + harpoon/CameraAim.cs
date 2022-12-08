@@ -14,8 +14,6 @@ public class CameraAim : MonoBehaviour
     [SerializeField] private GameObject currentHarpoon;
     public Transform spawnPoint;
     public bool readyToFire = true;
-    public float harpoonMaxDist;
-
 
     [Header("Harpoon Speed Values")]
     public float launchSpeed;
@@ -53,9 +51,10 @@ public class CameraAim : MonoBehaviour
             currentHarpoon.GetComponent<Harpoon>().ReturnToBoat();
         }
 
-        
+
         if (target != null)
         {
+            //transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
             transform.LookAt(target);
         }
         else
