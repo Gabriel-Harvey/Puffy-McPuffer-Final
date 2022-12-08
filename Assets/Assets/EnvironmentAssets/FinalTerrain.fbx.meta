@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2aefa9dbea7155f43bd0f6ec25c22e6d
+guid: c79fb8732f5d94844ab7613eb398ef70
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -19,6 +19,21 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: BushT3
     second: {fileID: 2100000, guid: 2b9b4edcf6935ea4195466751eee93a0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dirt
+    second: {fileID: 2100000, guid: 0cbf85a1af666b644b16d9836b9bbb91, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grass
+    second: {fileID: 2100000, guid: fb3123344f71d3f40ab23af584f1611d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GrassLimitCave1
+    second: {fileID: 2100000, guid: 4fb82fdc9601e7146bf96da22420a089, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -79,6 +94,26 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Tree3Trunk
     second: {fileID: 2100000, guid: 8761a5694963a2a4cb770d3cbea3b3c3, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: DirtBC
+    second: {fileID: 2800000, guid: 68fa89d3120c34f469de0bc92b166a5b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: GrassEnd_lambert1_BaseColor
+    second: {fileID: 2800000, guid: 7e07467e0d609bd44ad13bb713d01955, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: GrassEnd_lambert1_Opacity
+    second: {fileID: 2800000, guid: ae9a0089ded74604b8f9665aa7a798c5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: test
+    second: {fileID: 2800000, guid: 1ab323f225210db47a2576e40be69ee7, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
