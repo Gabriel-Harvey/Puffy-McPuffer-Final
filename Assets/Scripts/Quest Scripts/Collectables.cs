@@ -15,8 +15,6 @@ public class Collectables : MonoBehaviour
     [SerializeField] private float rotateSpeed;
     public bool questScore;
     private SelectionManager selection;
-    public CollectableBoat interacted;
-    public GameObject cargoBoatBody;
 
     [Header("Hooking onto Boat")]
     private float distance;
@@ -24,15 +22,10 @@ public class Collectables : MonoBehaviour
 
     private void Awake()
     {
-        cargoBoatBody = GetComponent<GameObject>();
         selection = gameObject.GetComponent<SelectionManager>();
     }
     private void Update()
     {
-        if (interacted.interactedCollectibles == true)
-        {
-            cargoBoatBody.SetActive(true);
-        }
         if (hooked == true)
         {
             transform.position = Vector3.MoveTowards(transform.position, boat.transform.position, speed * Time.deltaTime);

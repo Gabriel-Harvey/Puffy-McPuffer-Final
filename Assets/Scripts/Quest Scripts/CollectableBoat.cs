@@ -8,10 +8,19 @@ public class CollectableBoat : MonoBehaviour
     public GameObject boat;
     public bool interactedCollectibles = false;
     public bool allCollected;
+    public bool boatMove = false;
+    public bool waypointActivated = false;
     public GameObject interactImage;
-    public GameObject cargoBoat;
+    public GameObject cargoBoatDialogue;
+    public GameObject cargoBoatBody;
     public BoatMovement questTrigger;
     public Waypoint waypointMark;
+    public GameObject[] waypoints;
+    int current = 0;
+    float speed = 20f;
+    float turnSpeed = 20f;
+    float waypointRadius = 5f;
+
 
     [SerializeField]
     private KeyCode interactButton;
@@ -25,8 +34,18 @@ public class CollectableBoat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(questTrigger.rubbleTriggered == true)
+        {
+            waypointActivated = true;
+            waypointMark.CollectBoatWaypoint();
+        }
+
+        if (interactedCollectibles == false)
+        {
+            cargoBoatBody.SetActive(false);
+        }
         
-        if (Vector3.Distance(transform.position, boat.transform.position) < 20 && interactedCollectibles == false)
+        if (Vector3.Distance(transform.position, boat.transform.position) < 30 && interactedCollectibles == false)
         {
             interactImage.SetActive(true);
             if (Input.GetKeyDown(interactButton))
@@ -39,6 +58,8 @@ public class CollectableBoat : MonoBehaviour
 
         if (interactedCollectibles == true)
         {
+            waypointMark.CollectableWaypoints();
+            cargoBoatBody.SetActive(true);
             allCollected = true;
             for (int i = 0; i < collected.Length; i++)
             {
@@ -50,17 +71,40 @@ public class CollectableBoat : MonoBehaviour
             }
         }
 
-        if (Vector3.Distance(transform.position, boat.transform.position) < 20 && interactedCollectibles == true)
+        if (Vector3.Distance(transform.position, boat.transform.position) < 30 && interactedCollectibles == true)
         {
-                if (allCollected == true)
+            if (allCollected == true)
+            {
+                interactImage.SetActive(true);
+                if (Input.GetKeyDown(interactButton))
                 {
-                    interactImage.SetActive(true);
-                    if (Input.GetKeyDown(interactButton))
-                    {
-                        cargoBoat.GetComponent<DialogueTrigger>().TriggerDialogue();
-                        interactImage.SetActive(false);
-                    }
+                    cargoBoatDialogue.GetComponent<DialogueTrigger>().TriggerDialogue();
+                    interactImage.SetActive(false);
+                    boatMove = true;
                 }
+            }
         }
+
+        if (boatMove == true)
+        {
+            StartCoroutine(GoToEnd());
+        }
+    }
+
+    IEnumerator GoToEnd()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (Vector3.Distance(waypoints[current].transform.position, transform.position) < waypointRadius)
+        {
+            current++;
+            if (current == waypoints.Length)
+            {
+                StopCoroutine(GoToEnd());
+            }
+        }
+        transform.position = Vector3.MoveTowards(transform.position, waypoints[current].transform.position, Time.deltaTime * speed);
+        transform.rotation = Quaternion.Slerp(transform.rotation
+                , Quaternion.LookRotation(waypoints[current].transform.position - transform.position)
+                , turnSpeed * Time.deltaTime);
     }
 }
