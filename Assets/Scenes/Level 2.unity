@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2636,6 +2636,7 @@ MonoBehaviour:
   locked: 0
   rotateSpeed: 0
   questScore: 0
+  collectDist: 0
 --- !u!4 &716528093 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9ef02e6b05c59f04a9bd8afb5b96e052, type: 3}
@@ -3323,6 +3324,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Blank Hookable]'
       objectReference: {fileID: 0}
+    - target: {fileID: 5241826514957626252, guid: 783a644e65058bf458d041c1973dd3ab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6299205775815713054, guid: 783a644e65058bf458d041c1973dd3ab, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -3696,6 +3701,7 @@ MonoBehaviour:
   locked: 0
   rotateSpeed: 0
   questScore: 0
+  collectDist: 0
 --- !u!4 &957657071 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9ef02e6b05c59f04a9bd8afb5b96e052, type: 3}
@@ -4382,6 +4388,7 @@ MonoBehaviour:
   locked: 0
   rotateSpeed: 0
   questScore: 0
+  collectDist: 0
 --- !u!4 &1130049150 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9ef02e6b05c59f04a9bd8afb5b96e052, type: 3}
@@ -8035,6 +8042,7 @@ MonoBehaviour:
   currentHarpoon: {fileID: 0}
   spawnPoint: {fileID: 6707948936291716533}
   readyToFire: 1
+  harpoonMaxDist: 150
   launchSpeed: 40
   returnSpeed: 40
   hit: 0
