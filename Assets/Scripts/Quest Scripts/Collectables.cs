@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Collectables : MonoBehaviour
 {
-    public Transform boat;
+    public GameObject boat;
     [SerializeField] public bool hooked;
     private float speed;
     [SerializeField] Harpoon harpoon;
@@ -16,6 +16,10 @@ public class Collectables : MonoBehaviour
     public int questScore;
     private SelectionManager selection;
 
+    [Header("Hooking onto Boat")]
+    private float distance;
+    public float collectDist;
+
     private void Awake()
     {
         selection = gameObject.GetComponent<SelectionManager>();
@@ -24,7 +28,31 @@ public class Collectables : MonoBehaviour
     {
         if (hooked == true)
         {
-            transform.position = Vector3.MoveTowards(transform.position, boat.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, boat.transform.position, speed * Time.deltaTime);
+            distance = Vector3.Distance(boat.transform.position, transform.position);
+
+            if (distance < collectDist && hooked == true)
+            {
+                if (boat.GetComponentInChildren<CameraAim>().Stored == false)
+                {
+                    ConnectToBoat(boat.GetComponent<Rigidbody>(), boat.gameObject);
+
+                    questScore += 1;
+                    print(questScore);
+                    boat.gameObject.GetComponentInChildren<CameraAim>().Stored = true;
+                    boat.gameObject.GetComponentInChildren<CameraAim>().target = null;
+                }
+                else
+                {
+                    boat.gameObject.GetComponentInChildren<CameraAim>().target = null;
+
+                    questScore += 1;
+                    print(questScore);
+
+                    harpoon.DestroyHarpoon();
+                    Invisble();
+                }
+            }        
         }
 
     }
@@ -39,32 +67,6 @@ public class Collectables : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "PlayerBoat" & hooked == true)
-        {
-           
-            if (other.GetComponentInChildren<CameraAim>().Stored == false)
-            {
-                ConnectToBoat(other.attachedRigidbody, other.gameObject);
-
-                questScore += 1;
-                print(questScore);
-                other.GetComponentInChildren<CameraAim>().Stored = true;
-            }
-            else 
-            {
-                questScore += 1;
-                print(questScore);
-
-                harpoon.DestroyHarpoon();
-                Invisble();
-            }
-
-            
-        }
-        
-    }
 
     public void ConnectToBoat(Rigidbody boatRB, GameObject boat)
     {

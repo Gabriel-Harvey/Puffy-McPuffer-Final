@@ -11,7 +11,9 @@ public class Harpoon : MonoBehaviour
     [SerializeField] private float timeAlive;
     [SerializeField] private GameObject launcher;
     public float returnSpeed;
-    
+    public float distance;
+    private float maxDistance;
+    private bool returning;
 
     [Header("Hitting Rocks")]
     [SerializeField] private bool timerOn = true;
@@ -29,19 +31,17 @@ public class Harpoon : MonoBehaviour
     {
         FindBoat();
         returnSpeed = launcher.GetComponent<CameraAim>().returnSpeed;
+        maxDistance = launcher.GetComponent<CameraAim>().harpoonMaxDist;
     }
 
     void timer()
     {
-        //Timer that returns the harpoon after select amount of time.
-        if (fireTimer < timeAlive & timerOn == true) 
-        {
-            fireTimer += Time.deltaTime;
-        }
-        else if (fireTimer >= timeAlive & timerOn == true)
+        distance = Vector3.Distance(launcher.transform.position, transform.position);
+
+        if (distance > maxDistance)
         {
             rb.velocity = Vector3.zero;
-            transform.position = Vector3.MoveTowards(transform.position, launcher.transform.position, returnSpeed * Time.deltaTime);
+            ReturnToBoat();
         }
     }
 
@@ -64,7 +64,7 @@ public class Harpoon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) //Hitiing the boats collection collider.
     {
-        if (other.tag == "PlayerBoat" & fireTimer >= timeAlive || stopLooking == true)
+        if (other.tag == "PlayerBoat" & returning == true || stopLooking == true)
         {
             DestroyHarpoon();
         }
@@ -75,7 +75,6 @@ public class Harpoon : MonoBehaviour
         if (collision.gameObject.tag == "Hookable" & stopLooking == false)
         {
             timerOn = false;
-            fireTimer = 0f;
             Destroy(rb);
             launcher.GetComponent<CameraAim>().HarpoonHit(); //change for differnt aiming system 
             currentRock = collision.gameObject;
@@ -83,10 +82,8 @@ public class Harpoon : MonoBehaviour
         else if (collision.gameObject.tag == "Collectable" & collected == false)
         {
             timerOn = false;
-            fireTimer = 0f;
             transform.SetParent(collision.transform);
-        }
-        
+        }       
     }
 
     public void ReturnToBoat()
@@ -96,6 +93,7 @@ public class Harpoon : MonoBehaviour
             rb = gameObject.AddComponent<Rigidbody>();
             rb.useGravity = false;
             stopLooking = true;
+            returning = true;
         }
         else
         {

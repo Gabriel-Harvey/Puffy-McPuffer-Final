@@ -14,6 +14,8 @@ public class CameraAim : MonoBehaviour
     [SerializeField] private GameObject currentHarpoon;
     public Transform spawnPoint;
     public bool readyToFire = true;
+    public float harpoonMaxDist;
+
 
     [Header("Harpoon Speed Values")]
     public float launchSpeed;
