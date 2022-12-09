@@ -16,7 +16,7 @@ public class QuestManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (questScore.questScore >= 1)
+        if (questScore.questScore == true)
         {
             print("Woohoo");
         }

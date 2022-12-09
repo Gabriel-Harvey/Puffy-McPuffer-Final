@@ -13,8 +13,10 @@ public class Collectables : MonoBehaviour
     [SerializeField] Transform lockPosition;
     [SerializeField] private bool locked;
     [SerializeField] private float rotateSpeed;
-    public int questScore;
+    public bool questScore;
     private SelectionManager selection;
+    public CollectableBoat interacted;
+    public GameObject cargoBoatBody;
 
     [Header("Hooking onto Boat")]
     private float distance;
@@ -22,10 +24,15 @@ public class Collectables : MonoBehaviour
 
     private void Awake()
     {
+        cargoBoatBody = GetComponent<GameObject>();
         selection = gameObject.GetComponent<SelectionManager>();
     }
     private void Update()
     {
+        if (interacted.interactedCollectibles == true)
+        {
+            cargoBoatBody.SetActive(true);
+        }
         if (hooked == true)
         {
             transform.position = Vector3.MoveTowards(transform.position, boat.transform.position, speed * Time.deltaTime);
@@ -37,7 +44,7 @@ public class Collectables : MonoBehaviour
                 {
                     ConnectToBoat(boat.GetComponent<Rigidbody>(), boat.gameObject);
 
-                    questScore += 1;
+                    questScore = true;
                     print(questScore);
                     boat.gameObject.GetComponentInChildren<CameraAim>().Stored = true;
                     boat.gameObject.GetComponentInChildren<CameraAim>().target = null;
@@ -46,7 +53,7 @@ public class Collectables : MonoBehaviour
                 {
                     boat.gameObject.GetComponentInChildren<CameraAim>().target = null;
 
-                    questScore += 1;
+                    questScore = true;
                     print(questScore);
 
                     harpoon.DestroyHarpoon();

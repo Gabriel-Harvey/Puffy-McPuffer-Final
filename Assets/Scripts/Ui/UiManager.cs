@@ -40,7 +40,7 @@ public class UiManager : MonoBehaviour
 
         for  (int i = 0; i < 3; i++)
         {
-            if (questScore[i].questScore >= 1)
+            if (questScore[i].questScore == true)
             {
                 questIconsImage[i].sprite = questIconsArray[1];
             }
