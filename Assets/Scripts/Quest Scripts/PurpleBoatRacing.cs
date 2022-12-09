@@ -46,6 +46,7 @@ public class PurpleBoatRacing : MonoBehaviour
 
             if (raceAllowed == true)
             {
+                raceGoal.SetActive(true);
                 if (reachedPoint == false)
                 {
                     transform.position = Vector3.MoveTowards(transform.position, raceGoal.transform.position, Time.deltaTime * raceSpeed);
@@ -134,21 +135,29 @@ public class PurpleBoatRacing : MonoBehaviour
 
     public IEnumerator StartAgain()
     {
+
         transform.position = Vector3.MoveTowards(transform.position, startPos.transform.position, Time.deltaTime * raceSpeed);
         transform.rotation = Quaternion.Slerp(transform.rotation
                 , Quaternion.LookRotation(startPos.transform.position - transform.position)
                 , raceTurnSpeed * Time.deltaTime);
+        yield return new WaitForSeconds(0.1f);
 
-        yield return new WaitForSeconds(5);
+        if (Vector3.Distance(startPos.transform.position, transform.position) < waypointRadius)
+        {
+            {
+                reachedPoint = false;
+                raceAllowed = false;
+                waypointActivated = false;
+                transform.rotation = Quaternion.Slerp(transform.rotation
+                    , Quaternion.LookRotation(raceGoal.transform.position - transform.position)
+                    , raceTurnSpeed * Time.deltaTime);
+                yield return new WaitForSeconds(0.1f);
+                StopCoroutine(StartAgain());
+            }
 
-        reachedPoint = false;
-        raceAllowed = false;
-        waypointActivated = false;
-        transform.rotation = Quaternion.Slerp(transform.rotation
-            , Quaternion.LookRotation(raceGoal.transform.position - transform.position)
-            , raceTurnSpeed * Time.deltaTime);
-        StopCoroutine(StartAgain());
+        }
     }
+    
 
     void OnTriggerEnter(Collider other)
     {

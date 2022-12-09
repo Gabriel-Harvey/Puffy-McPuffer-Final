@@ -7400,7 +7400,7 @@ PrefabInstance:
       objectReference: {fileID: 1434587190}
     - target: {fileID: 8146035300852854418, guid: 7b5f2e9c7d2912649a11b9806499728e, type: 3}
       propertyPath: raceSpeed
-      value: 15
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 8146035300852854418, guid: 7b5f2e9c7d2912649a11b9806499728e, type: 3}
       propertyPath: waypointMark
