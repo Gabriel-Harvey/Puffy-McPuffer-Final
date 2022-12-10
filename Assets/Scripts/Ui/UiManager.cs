@@ -19,7 +19,7 @@ public class UiManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < crates.Length; i++)
         {
             questScore[i] = crates[i].GetComponent<Collectables>();
         }
@@ -38,7 +38,7 @@ public class UiManager : MonoBehaviour
             QuestMenuAnimator.SetBool("MenuUp", false);
         }
 
-        for  (int i = 0; i < 3; i++)
+        for  (int i = 0; i < crates.Length; i++)
         {
             if (questScore[i].questScore == true)
             {

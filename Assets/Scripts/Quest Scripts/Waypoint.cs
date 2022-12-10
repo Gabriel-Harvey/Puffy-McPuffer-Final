@@ -117,7 +117,7 @@ public class Waypoint : MonoBehaviour
 
     public void FollowWaypoint()
     {
-        for (int i = 4; i < 5; i++)
+        for (int i = 3; i < 4; i++)
         {
             if (followBoat.waypointActivated == true)
             {
@@ -162,7 +162,7 @@ public class Waypoint : MonoBehaviour
 
     public void CollectBoatWaypoint()
     {
-        for (int i = 5; i < 6; i++)
+        for (int i = 4; i < 5; i++)
         {
             if (collectBoat.waypointActivated == true)
             {

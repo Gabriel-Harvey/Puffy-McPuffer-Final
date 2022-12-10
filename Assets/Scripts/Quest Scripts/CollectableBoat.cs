@@ -25,12 +25,6 @@ public class CollectableBoat : MonoBehaviour
     [SerializeField]
     private KeyCode interactButton;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -52,13 +46,13 @@ public class CollectableBoat : MonoBehaviour
             {
                 GetComponent<DialogueTrigger>().TriggerDialogue();
                 interactedCollectibles = true;
-                interactImage.SetActive(false);
             }
         }
 
         if (interactedCollectibles == true)
         {
             waypointMark.CollectableWaypoints();
+            interactImage.SetActive(false);
             cargoBoatBody.SetActive(true);
             allCollected = true;
             for (int i = 0; i < collected.Length; i++)
@@ -81,6 +75,7 @@ public class CollectableBoat : MonoBehaviour
                     cargoBoatDialogue.GetComponent<DialogueTrigger>().TriggerDialogue();
                     interactImage.SetActive(false);
                     boatMove = true;
+                    cargoBoatBody.SetActive(false);
                 }
             }
         }

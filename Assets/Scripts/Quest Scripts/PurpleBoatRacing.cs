@@ -21,6 +21,7 @@ public class PurpleBoatRacing : MonoBehaviour
     public bool checkpointPassed = false;
     public bool waypointActivated;
     public GameObject raceGoal;
+    public GameObject raceIndicator;
     public GameObject startPos;
     public GameObject[] waypoints;
     Vector3 velocityBoat;
@@ -39,7 +40,7 @@ public class PurpleBoatRacing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerRaceCondition.rubbleTriggered == true)
+        if (playerRaceCondition.rubbleTriggered == true)
         {
             waypointActivated = true;
             waypointMark.RaceWaypoint();
@@ -47,6 +48,7 @@ public class PurpleBoatRacing : MonoBehaviour
             if (raceAllowed == true)
             {
                 raceGoal.SetActive(true);
+                raceIndicator.SetActive(true);
                 if (reachedPoint == false)
                 {
                     transform.position = Vector3.MoveTowards(transform.position, raceGoal.transform.position, Time.deltaTime * raceSpeed);
@@ -95,6 +97,7 @@ public class PurpleBoatRacing : MonoBehaviour
             if (reachedPoint == true)
             {
                 raceGoal.SetActive(false);
+                raceIndicator.SetActive(false);
                 StartCoroutine(StartAgain());
             }
             if (playerRaceCondition.wonRace == true)
