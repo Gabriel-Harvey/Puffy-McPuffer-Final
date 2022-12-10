@@ -13,7 +13,7 @@ public class CollectableBoat : MonoBehaviour
     public GameObject interactImage;
     public GameObject cargoBoatDialogue;
     public GameObject cargoBoatBody;
-    public BoatMovement questTrigger;
+    public PaintQuest collectedCheck;
     public Waypoint waypointMark;
     public GameObject[] waypoints;
     int current = 0;
@@ -28,7 +28,7 @@ public class CollectableBoat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(questTrigger.rubbleTriggered == true)
+        if(collectedCheck.isCollected == true)
         {
             waypointActivated = true;
             waypointMark.CollectBoatWaypoint();

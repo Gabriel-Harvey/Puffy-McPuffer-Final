@@ -11,7 +11,7 @@ public class GreenBoatFollow : MonoBehaviour
     public bool reachedPoint = false;
     public bool waypointActivated;
     public GameObject interactImage;
-    public BoatMovement questTrigger;
+    public PaintQuest collectedCheck;
     public Waypoint waypointMark;
 
     [SerializeField]
@@ -26,7 +26,7 @@ public class GreenBoatFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (questTrigger.rubbleTriggered == true)
+        if (collectedCheck.isCollected == true)
         {
             waypointActivated = true;
             waypointMark.FollowWaypoint();
@@ -34,6 +34,7 @@ public class GreenBoatFollow : MonoBehaviour
             if (followAllowed == true)
             {
                 waypointActivated = false;
+                waypointMark.PaintWaypoint();
                 if (Vector3.Distance(transform.position, transformPlayer.position) < 30 && Vector3.Distance(transform.position, transformPlayer.position) > 10)
                 {
                     if (reachedPoint == false)

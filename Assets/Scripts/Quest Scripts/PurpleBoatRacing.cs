@@ -9,6 +9,7 @@ public class PurpleBoatRacing : MonoBehaviour
     public Transform transformPlayer;
     public BoatMovement playerRaceCondition;
     public Waypoint waypointMark;
+    public PaintQuest collectedCheck;
     public float raceSpeed = 30f;
     public float raceTurnSpeed = 20f;
     public float countdown = 5f;
@@ -40,7 +41,7 @@ public class PurpleBoatRacing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerRaceCondition.rubbleTriggered == true)
+        if (collectedCheck.isCollected == true)
         {
             waypointActivated = true;
             waypointMark.RaceWaypoint();
@@ -49,6 +50,8 @@ public class PurpleBoatRacing : MonoBehaviour
             {
                 raceGoal.SetActive(true);
                 raceIndicator.SetActive(true);
+                waypointActivated = false;
+                waypointMark.PaintWaypoint();
                 if (reachedPoint == false)
                 {
                     transform.position = Vector3.MoveTowards(transform.position, raceGoal.transform.position, Time.deltaTime * raceSpeed);
