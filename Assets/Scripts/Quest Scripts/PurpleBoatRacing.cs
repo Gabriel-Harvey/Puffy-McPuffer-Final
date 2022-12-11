@@ -21,11 +21,17 @@ public class PurpleBoatRacing : MonoBehaviour
     public bool startCounter = false;
     public bool checkpointPassed = false;
     public bool waypointActivated;
+    public bool isActive;
     public GameObject raceGoal;
     public GameObject raceIndicator;
     public GameObject startPos;
     public GameObject[] waypoints;
     Vector3 velocityBoat;
+
+    [SerializeField]
+    GreenBoatFollow followBoatCheck;
+    [SerializeField]
+    CollectableBoat collectBoatCheck;
 
     [SerializeField]
     private KeyCode raceButton;
@@ -36,6 +42,7 @@ public class PurpleBoatRacing : MonoBehaviour
     {
         // raceGoal.SetActive(false);
         waypointActivated = false;
+        isActive = false;
     }
 
     // Update is called once per frame
@@ -51,6 +58,7 @@ public class PurpleBoatRacing : MonoBehaviour
                 raceGoal.SetActive(true);
                 raceIndicator.SetActive(true);
                 waypointActivated = false;
+                isActive = true;
                 waypointMark.PaintWaypoint();
                 if (reachedPoint == false)
                 {
@@ -110,7 +118,12 @@ public class PurpleBoatRacing : MonoBehaviour
                 StartCoroutine(Lost());
             }
         }
-        
+
+        if (followBoatCheck.isActive == true || collectBoatCheck.isActive == true)
+        {
+            waypointActivated = false;
+            waypointMark.CollectBoatWaypoint();
+        }
     }
 
     public IEnumerator Wait()

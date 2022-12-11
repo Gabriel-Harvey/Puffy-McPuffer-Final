@@ -10,10 +10,17 @@ public class CollectableBoat : MonoBehaviour
     public bool allCollected;
     public bool boatMove = false;
     public bool waypointActivated = false;
+    public bool isActive;
     public GameObject interactImage;
     public GameObject cargoBoatDialogue;
     public GameObject cargoBoatBody;
     public PaintQuest collectedCheck;
+
+    [SerializeField]
+    public GreenBoatFollow followBoatCheck;
+    [SerializeField]
+    public PurpleBoatRacing raceBoatCheck;
+
     public Waypoint waypointMark;
     public GameObject[] waypoints;
     int current = 0;
@@ -24,6 +31,11 @@ public class CollectableBoat : MonoBehaviour
 
     [SerializeField]
     private KeyCode interactButton;
+
+    private void Start()
+    {
+        isActive = false;
+    }
 
     // Update is called once per frame
     void Update()
@@ -55,6 +67,7 @@ public class CollectableBoat : MonoBehaviour
             interactImage.SetActive(false);
             cargoBoatBody.SetActive(true);
             allCollected = true;
+            isActive = true;
             for (int i = 0; i < collected.Length; i++)
             {
                 if (collected[i].questScore == false)
@@ -83,6 +96,12 @@ public class CollectableBoat : MonoBehaviour
         if (boatMove == true)
         {
             StartCoroutine(GoToEnd());
+        }
+
+        if(raceBoatCheck.isActive == true || followBoatCheck.isActive == true)
+        {
+            waypointActivated = false;
+            waypointMark.CollectBoatWaypoint();
         }
     }
 

@@ -10,8 +10,15 @@ public class GreenBoatFollow : MonoBehaviour
     public bool followAllowed = false;
     public bool reachedPoint = false;
     public bool waypointActivated;
+    public bool isActive;
     public GameObject interactImage;
     public PaintQuest collectedCheck;
+
+    [SerializeField]
+    PurpleBoatRacing raceBoatCheck;
+    [SerializeField]
+    CollectableBoat collectBoatCheck;
+
     public Waypoint waypointMark;
 
     [SerializeField]
@@ -21,6 +28,7 @@ public class GreenBoatFollow : MonoBehaviour
     void Start()
     {
         waypointActivated = false;
+        isActive = false;
     }
 
     // Update is called once per frame
@@ -34,7 +42,8 @@ public class GreenBoatFollow : MonoBehaviour
             if (followAllowed == true)
             {
                 waypointActivated = false;
-                waypointMark.PaintWaypoint();
+                isActive = true;
+                waypointMark.FollowWaypoint();
                 if (Vector3.Distance(transform.position, transformPlayer.position) < 30 && Vector3.Distance(transform.position, transformPlayer.position) > 10)
                 {
                     if (reachedPoint == false)
@@ -58,6 +67,12 @@ public class GreenBoatFollow : MonoBehaviour
             {
                 interactImage.SetActive(false);
             }
+        }
+
+        if (raceBoatCheck.isActive == true || collectBoatCheck.isActive == true)
+        {
+            waypointActivated = false;
+            waypointMark.CollectBoatWaypoint();
         }
     }
 
