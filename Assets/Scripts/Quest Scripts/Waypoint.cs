@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Waypoint : MonoBehaviour
 {
-    public Image[] questImage;
+    public RawImage[] questImage;
     public Transform[] targetPosition;
     public Text[] distanceToTarget;
     public Camera cam;

@@ -22,7 +22,7 @@ public class CameraDelay : MonoBehaviour
         }
         else
         {
-            transform.position = Vector3.Lerp(transform.position, -behindBoat.position, Time.deltaTime * turnSpeed);
+            transform.position = Vector3.Lerp(transform.position, behindBoat.position, Time.deltaTime * -turnSpeed);
         }
         
     }

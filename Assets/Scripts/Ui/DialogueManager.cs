@@ -8,6 +8,7 @@ public class DialogueManager : MonoBehaviour
     public Text nameText;
     public Text dialogueText;
     public GameObject box;
+    public GameObject tint;
     public GameObject portraitPuffy;
     public DialogueTrigger[] portrait;
 
@@ -25,6 +26,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue)
     {
         box.SetActive(true);
+        tint.SetActive(true);
         portraitPuffy.SetActive(true);
         for (int i = 0; i < portrait.Length; i++)
         {
@@ -53,6 +55,7 @@ public class DialogueManager : MonoBehaviour
             {
                 EndDialogue();
                 box.SetActive(false);
+                tint.SetActive(false);
                 return;
             }
 
