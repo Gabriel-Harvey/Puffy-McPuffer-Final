@@ -7,12 +7,14 @@ public class FinishQuest : MonoBehaviour
     public PurpleBoatRacing purpleBoatFinish;
     public GreenBoatFollow greenBoatFinish;
     public CollectableBoat collectableFinish;
+    public Waypoint rubbleWaypoint;
     public bool greenFinished = false;
     public bool purpleFinished = false;
     public bool collectableFinished = false;
     public Transform transformPlayer;
     public GameObject interactImage;
     public GameObject[] rubble;
+    public bool rubbleWaypointActivated;
 
     public bool everythingFinished = false;
     public bool rubbleCleared = false;
@@ -22,12 +24,14 @@ public class FinishQuest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        rubbleWaypointActivated = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        rubbleWaypoint.RubbleWaypoint();
+
         if (purpleBoatFinish.finishedQuest == true)
         {
             purpleFinished = true;
@@ -46,6 +50,7 @@ public class FinishQuest : MonoBehaviour
         if (purpleFinished == true && greenFinished == true && collectableFinished == true)
         {
             everythingFinished = true;
+            rubbleWaypointActivated = true;
         }
 
         if (everythingFinished == true && Vector3.Distance(transform.position, transformPlayer.position) < 50)
@@ -58,11 +63,15 @@ public class FinishQuest : MonoBehaviour
                 {
                     rubble[i].SetActive(false);
                     rubbleCleared = true;
-                    Application.Quit();
                     //Insert animation script here
                 }
                 
             }
+        }
+
+        if (rubbleCleared == true)
+        {
+            rubbleWaypointActivated = false;
         }
     }
 }

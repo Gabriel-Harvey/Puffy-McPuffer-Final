@@ -10,7 +10,6 @@ public class GreenBoatFollow : MonoBehaviour
     public bool followAllowed = false;
     public bool reachedPoint = false;
     public bool boatWaypointActivated;
-    public bool rubbleWaypointActivated;
     public bool isActive;
     public GameObject interactImage;
     public PaintQuest collectedCheck;
@@ -29,7 +28,6 @@ public class GreenBoatFollow : MonoBehaviour
     void Start()
     {
         boatWaypointActivated = false;
-        rubbleWaypointActivated = false;
         isActive = false;
     }
 
@@ -54,8 +52,6 @@ public class GreenBoatFollow : MonoBehaviour
                 boatWaypointActivated = false;
                 isActive = true;
                 waypointMark.FollowWaypoint();
-                rubbleWaypointActivated = true;
-                waypointMark.RubbleWaypoint();
                 if (Vector3.Distance(transform.position, transformPlayer.position) < 30 && Vector3.Distance(transform.position, transformPlayer.position) > 10)
                 {
                     if (reachedPoint == false)
@@ -84,8 +80,6 @@ public class GreenBoatFollow : MonoBehaviour
         if (reachedPoint == true)
         {
             isActive = false;
-            rubbleWaypointActivated = false;
-            waypointMark.RubbleWaypoint();
         }
     }
 

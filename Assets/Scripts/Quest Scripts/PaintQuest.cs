@@ -73,6 +73,7 @@ public class PaintQuest : MonoBehaviour
                     {
                         canalPartySetup[2].GetComponent<DialogueTrigger>().TriggerDialogue();
                         interactImage.SetActive(false);
+                        Application.Quit();
                     }
                 }
             }

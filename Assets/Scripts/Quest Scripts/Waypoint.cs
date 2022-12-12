@@ -15,6 +15,7 @@ public class Waypoint : MonoBehaviour
     public GreenBoatFollow followBoat;
     public CollectableBoat collectBoat;
     public PaintQuest paintBoat;
+    public FinishQuest finishQuest;
 
     // Start is called before the first frame update
     void Start()
@@ -258,7 +259,7 @@ public class Waypoint : MonoBehaviour
     {
         for (int i = 6; i < 7; i++)
         {
-            if (followBoat.rubbleWaypointActivated == true)
+            if (finishQuest.rubbleWaypointActivated == true)
             {
                 questImage[i].enabled = true;
                 distanceToTarget[i].enabled = true;

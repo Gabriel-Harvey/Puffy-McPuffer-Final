@@ -80,10 +80,7 @@ public class DialogueManager : MonoBehaviour
     {
         for (int i = 0; i < portrait.Length; i++)
         {
-            if (portrait[i].portraitCheck == true)
-            {
                 portrait[i].portrait.SetActive(false);
-            }
         }
         portraitPuffy.SetActive(false);
         Time.timeScale = 1;
