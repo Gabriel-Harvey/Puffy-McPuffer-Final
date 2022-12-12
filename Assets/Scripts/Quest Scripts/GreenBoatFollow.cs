@@ -9,13 +9,14 @@ public class GreenBoatFollow : MonoBehaviour
     public Transform transformPlayer;
     public bool followAllowed = false;
     public bool reachedPoint = false;
-    public bool waypointActivated;
+    public bool boatWaypointActivated;
+    public bool rubbleWaypointActivated;
     public bool isActive;
     public GameObject interactImage;
     public PaintQuest collectedCheck;
 
     [SerializeField]
-    PurpleBoatRacing raceBoatCheck;
+    public PurpleBoatRacing raceBoatCheck;
     [SerializeField]
     CollectableBoat collectBoatCheck;
 
@@ -27,7 +28,8 @@ public class GreenBoatFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        waypointActivated = false;
+        boatWaypointActivated = false;
+        rubbleWaypointActivated = false;
         isActive = false;
     }
 
@@ -36,14 +38,24 @@ public class GreenBoatFollow : MonoBehaviour
     {
         if (collectedCheck.isCollected == true)
         {
-            waypointActivated = true;
-            waypointMark.FollowWaypoint();
+            if (raceBoatCheck.isActive == false && collectBoatCheck.isActive == false)
+            {
+                boatWaypointActivated = true;
+                waypointMark.FollowWaypoint();
+            }
+            else
+            {
+                boatWaypointActivated = false;
+                waypointMark.FollowWaypoint();
+            }
 
             if (followAllowed == true)
             {
-                waypointActivated = false;
+                boatWaypointActivated = false;
                 isActive = true;
                 waypointMark.FollowWaypoint();
+                rubbleWaypointActivated = true;
+                waypointMark.RubbleWaypoint();
                 if (Vector3.Distance(transform.position, transformPlayer.position) < 30 && Vector3.Distance(transform.position, transformPlayer.position) > 10)
                 {
                     if (reachedPoint == false)
@@ -69,10 +81,11 @@ public class GreenBoatFollow : MonoBehaviour
             }
         }
 
-        if (raceBoatCheck.isActive == true || collectBoatCheck.isActive == true)
+        if (reachedPoint == true)
         {
-            waypointActivated = false;
-            waypointMark.CollectBoatWaypoint();
+            isActive = false;
+            rubbleWaypointActivated = false;
+            waypointMark.RubbleWaypoint();
         }
     }
 

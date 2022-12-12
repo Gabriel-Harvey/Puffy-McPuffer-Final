@@ -876,7 +876,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 111120443}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 100.1, y: 28, z: 191.3}
+  m_LocalPosition: {x: -165.9, y: 28, z: 181.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1669,44 +1669,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1337.5571, y: 730.4436, z: 1643.0477}
   m_Center: {x: -10.166704, y: -510.26718, z: -821.04395}
---- !u!114 &223458889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 223458881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 461f78769ad5567429568ac9a6cab2a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    name: Canal
-    sentences:
-    - 'Thank you for bringing me the paint... But now the guests can''t come through. '
-    - Mind helping them out, get them to help clear the rubble? I'll make it worth
-      your while.
---- !u!114 &223458890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 223458881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19f86308e7e8ef84796e443e4cf84d91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isCollected: 0
-  paintBoat: {fileID: 513773793}
-  paintBoatBody: {fileID: 513773788}
-  playerBoat: {fileID: 6707948935959248349}
-  paintWaypoint: {fileID: 1897466008}
-  interactImage: {fileID: 1742013071}
-  waypointActivated: 0
-  collectButton: 101
 --- !u!1001 &241568815
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2463,6 +2425,29 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297831645}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &308172399 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
+  m_PrefabInstance: {fileID: 1509401629}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &308172400
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308172399}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 478.60516, y: 272.60196, z: 1690.0902}
+  m_Center: {x: -14.7870035, y: -17.125277, z: -66.893585}
+--- !u!4 &308172401 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
+  m_PrefabInstance: {fileID: 1509401629}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &324537226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3176,9 +3161,8 @@ MonoBehaviour:
   dialogue:
     name: Quest!
     sentences:
-    - Find the green boat, who is lost in the caves, and the purple boat, who desires
-      a race, past the rubble.
-    - Afterwards, once they both are gathered, tear down the rubble.
+    - Puffer, if you fetch me some paint, then i can get ready for the party.
+    - I'll let you through once you've done that  for me, if you please.
 --- !u!4 &408744240
 Transform:
   m_ObjectHideFlags: 0
@@ -5232,6 +5216,83 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da9edddc0d2a5a04e82c5814db47bb5a, type: 3}
+--- !u!1 &628564643
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 628564644}
+  - component: {fileID: 628564645}
+  - component: {fileID: 628564646}
+  m_Layer: 5
+  m_Name: Rubble Waypoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &628564644
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628564643}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1296079280}
+  m_Father: {fileID: 1803625852}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &628564645
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628564643}
+  m_CullTransparentMesh: 1
+--- !u!114 &628564646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628564643}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1001 &635464569
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5523,13 +5584,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2090908369}
     - target: {fileID: 4389996191443459165, guid: 42b06839877a24b46b551c40223e140c, type: 3}
+      propertyPath: raceBoatCheck
+      value: 
+      objectReference: {fileID: 2130972105}
+    - target: {fileID: 4389996191443459165, guid: 42b06839877a24b46b551c40223e140c, type: 3}
       propertyPath: collectedCheck
       value: 
-      objectReference: {fileID: 223458890}
+      objectReference: {fileID: 2088865080}
     - target: {fileID: 4389996191443459165, guid: 42b06839877a24b46b551c40223e140c, type: 3}
       propertyPath: transformPlayer
       value: 
       objectReference: {fileID: 6707948935959248350}
+    - target: {fileID: 4389996191443459165, guid: 42b06839877a24b46b551c40223e140c, type: 3}
+      propertyPath: collectBoatCheck
+      value: 
+      objectReference: {fileID: 1400417611}
     - target: {fileID: 4389996191443459165, guid: 42b06839877a24b46b551c40223e140c, type: 3}
       propertyPath: waypointActivated
       value: 0
@@ -6829,6 +6898,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8804c938caadaaf4b9ef2d378924fe2a, type: 3}
+--- !u!1 &819528564 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7e339dee06f4f044bb6039e44080dd12, type: 3}
+  m_PrefabInstance: {fileID: 1743304632}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &827101416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8088,7 +8162,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 943207119}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -8138,14 +8212,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 943207119}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 382, y: 24, z: 221.63}
-  m_LocalScale: {x: 6.101638, y: 6.101638, z: 6.101638}
+  m_LocalRotation: {x: -0, y: -0.040388677, z: -0, w: 0.9991841}
+  m_LocalPosition: {x: 382, y: 24, z: 203.52}
+  m_LocalScale: {x: 6.101638, y: 6.101638, z: 77.60673}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 30
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -4.629, z: 0}
 --- !u!114 &943207124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9667,6 +9741,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da9edddc0d2a5a04e82c5814db47bb5a, type: 3}
+--- !u!1 &1167363436 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c842f7349850b94289eb952f1de8675, type: 3}
+  m_PrefabInstance: {fileID: 422077701}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1167363437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167363436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461f78769ad5567429568ac9a6cab2a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Canal
+    sentences:
+    - Thank you again, Puffy! Now, we can get this party started!
+    - I wish you could stay, but a promise is a promise. I'll let you through.
 --- !u!1 &1167501863
 GameObject:
   m_ObjectHideFlags: 0
@@ -10512,6 +10608,86 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1291855836}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1296079279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1296079280}
+  - component: {fileID: 1296079281}
+  - component: {fileID: 1296079282}
+  m_Layer: 5
+  m_Name: Rubble
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1296079280
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296079279}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 628564644}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -5.4999886, y: 43.999985}
+  m_SizeDelta: {x: 177.4468, y: 66.6255}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1296079281
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296079279}
+  m_CullTransparentMesh: 1
+--- !u!114 &1296079282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296079279}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 32
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
 --- !u!1 &1302520935
 GameObject:
   m_ObjectHideFlags: 0
@@ -10796,6 +10972,65 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6843027420135130107, guid: 6bd6c87dde95bd94c9451df3d171cd6f, type: 3}
   m_PrefabInstance: {fileID: 1683732803}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1371619847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1371619848}
+  - component: {fileID: 1371619849}
+  m_Layer: 0
+  m_Name: Canal Rubble
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1371619848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371619847}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 350.77002, y: 25.100002, z: 201.48001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1372838195}
+  - {fileID: 308172401}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1371619849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371619847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 221918f852ec1b941bdfe58660b3db88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  purpleBoatFinish: {fileID: 2130972105}
+  greenBoatFinish: {fileID: 39596716}
+  collectableFinish: {fileID: 1400417611}
+  greenFinished: 0
+  purpleFinished: 0
+  collectableFinished: 0
+  transformPlayer: {fileID: 6707948935959248350}
+  interactImage: {fileID: 2090908368}
+  rubble:
+  - {fileID: 1372838193}
+  - {fileID: 308172399}
+  everythingFinished: 0
+  finishInteract: 101
 --- !u!1 &1372838193 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
@@ -10814,6 +11049,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 478.60516, y: 272.60196, z: 1690.0902}
   m_Center: {x: -14.7870035, y: -17.125277, z: -66.893585}
+--- !u!4 &1372838195 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
+  m_PrefabInstance: {fileID: 1951040760}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1373922479
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10943,14 +11183,16 @@ MonoBehaviour:
   interactedCollectibles: 0
   allCollected: 0
   boatMove: 0
-  waypointActivated: 0
+  boatWaypointActivated: 0
+  cargoWaypointActivated: 0
   isActive: 0
+  questFinished: 0
   interactImage: {fileID: 381072871}
   cargoBoatDialogue: {fileID: 959210772}
   cargoBoatBody: {fileID: 959210772}
-  collectedCheck: {fileID: 223458890}
-  followBoatCheck: {fileID: 0}
-  raceBoatCheck: {fileID: 0}
+  collectedCheck: {fileID: 2088865080}
+  followBoatCheck: {fileID: 39596716}
+  raceBoatCheck: {fileID: 2130972105}
   waypointMark: {fileID: 1897466008}
   waypoints:
   - {fileID: 2144979897}
@@ -11860,6 +12102,75 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6299205775815713054, guid: 783a644e65058bf458d041c1973dd3ab, type: 3}
   m_PrefabInstance: {fileID: 1483971498}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1509401629
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1371619848}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.03512796
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.035127956
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.03512796
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -485.97003
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16.180008
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.999477
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.032337632
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -3.706
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
+      propertyPath: m_Name
+      value: OA_CargoBarrier (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
 --- !u!1001 &1522739037
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15194,6 +15505,7 @@ MonoBehaviour:
   - {fileID: 1787471084}
   - {fileID: 771522620}
   - {fileID: 771522620}
+  - {fileID: 628564646}
   targetPosition:
   - {fileID: 1348741029}
   - {fileID: 2087175750}
@@ -15201,6 +15513,7 @@ MonoBehaviour:
   - {fileID: 644265244}
   - {fileID: 1400417615}
   - {fileID: 513773789}
+  - {fileID: 1372838195}
   distanceToTarget:
   - {fileID: 399078157}
   - {fileID: 9337153}
@@ -15208,6 +15521,7 @@ MonoBehaviour:
   - {fileID: 2120054794}
   - {fileID: 1606873767}
   - {fileID: 1606873767}
+  - {fileID: 1296079282}
   cam: {fileID: 6707948935237199368}
   offset: {x: 1, y: 8, z: 1}
   questObjects:
@@ -15216,7 +15530,7 @@ MonoBehaviour:
   raceBoat: {fileID: 2130972105}
   followBoat: {fileID: 39596716}
   collectBoat: {fileID: 1400417611}
-  paintBoat: {fileID: 223458890}
+  paintBoat: {fileID: 2088865080}
 --- !u!1 &1898864042
 GameObject:
   m_ObjectHideFlags: 0
@@ -15488,6 +15802,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: trigger
       objectReference: {fileID: 0}
+    - target: {fileID: 5993392468797582809, guid: 3df6101b53aa6fa4a998f7fc5d349891, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3df6101b53aa6fa4a998f7fc5d349891, type: 3}
 --- !u!1 &1942573544 stripped
@@ -15505,11 +15823,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1371619848}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
       propertyPath: m_LocalScale.x
@@ -15517,23 +15835,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.035127956
+      value: 0.035127953
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.035127956
+      value: 0.035127953
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 350.77
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 25.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 201.48
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15541,11 +15859,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.032337632
+      value: -0.032337636
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e88e4f0b240d1d4a8337401ff393714, type: 3}
       propertyPath: m_LocalRotation.z
@@ -16288,7 +16606,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2033084855
 Transform:
   m_ObjectHideFlags: 0
@@ -16311,7 +16629,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033084854}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -16644,6 +16962,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2088865079}
+  - component: {fileID: 2088865080}
+  - component: {fileID: 2088865081}
   m_Layer: 0
   m_Name: CaledonianCanal
   m_TagString: Untagged
@@ -16669,6 +16989,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2088865080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088865078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19f86308e7e8ef84796e443e4cf84d91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCollected: 0
+  paintBoat: {fileID: 513773793}
+  paintBoatBody: {fileID: 513773788}
+  playerBoat: {fileID: 6707948935959248349}
+  canalPartySetup:
+  - {fileID: 223458881}
+  - {fileID: 819528564}
+  - {fileID: 1167363436}
+  paintWaypoint: {fileID: 1897466008}
+  boat: {fileID: 6707948935959248349}
+  interactImage: {fileID: 1742013071}
+  waypointActivated: 0
+  gameComplete: {fileID: 1371619849}
+  collectButton: 101
+--- !u!114 &2088865081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088865078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461f78769ad5567429568ac9a6cab2a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Canal
+    sentences:
+    - Thank you, Puffy!... But now the canal to get here is blocked.
+    - Would you mind helping some boats out to help you clear the rubble? I'll help
+      you in return!
 --- !u!1001 &2090908367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17407,7 +17771,7 @@ PrefabInstance:
       objectReference: {fileID: 1434587190}
     - target: {fileID: 8146035300852854418, guid: 7b5f2e9c7d2912649a11b9806499728e, type: 3}
       propertyPath: raceSpeed
-      value: 70
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8146035300852854418, guid: 7b5f2e9c7d2912649a11b9806499728e, type: 3}
       propertyPath: waypointMark
@@ -17432,15 +17796,23 @@ PrefabInstance:
     - target: {fileID: 8146035300852854418, guid: 7b5f2e9c7d2912649a11b9806499728e, type: 3}
       propertyPath: collectedCheck
       value: 
-      objectReference: {fileID: 223458890}
+      objectReference: {fileID: 2088865080}
     - target: {fileID: 8146035300852854418, guid: 7b5f2e9c7d2912649a11b9806499728e, type: 3}
       propertyPath: waypointRadius
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8146035300852854418, guid: 7b5f2e9c7d2912649a11b9806499728e, type: 3}
+      propertyPath: followBoatCheck
+      value: 
+      objectReference: {fileID: 39596716}
+    - target: {fileID: 8146035300852854418, guid: 7b5f2e9c7d2912649a11b9806499728e, type: 3}
       propertyPath: transformPlayer
       value: 
       objectReference: {fileID: 6707948935959248350}
+    - target: {fileID: 8146035300852854418, guid: 7b5f2e9c7d2912649a11b9806499728e, type: 3}
+      propertyPath: collectBoatCheck
+      value: 
+      objectReference: {fileID: 1400417611}
     - target: {fileID: 8146035300852854418, guid: 7b5f2e9c7d2912649a11b9806499728e, type: 3}
       propertyPath: playerRaceCondition
       value: 
@@ -19301,7 +19673,9 @@ MonoBehaviour:
   maxMoveSpeed: 25
   wonRace: 0
   race: {fileID: 2130972105}
-  rubble: {fileID: 1372838193}
+  rubble:
+  - {fileID: 1372838193}
+  - {fileID: 308172399}
   rubbleTriggered: 0
   forwardKey: 119
   backKey: 115

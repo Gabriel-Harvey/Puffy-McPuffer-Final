@@ -50,8 +50,16 @@ public class PurpleBoatRacing : MonoBehaviour
     {
         if (collectedCheck.isCollected == true)
         {
-            waypointActivated = true;
-            waypointMark.RaceWaypoint();
+            if (followBoatCheck.isActive == false && collectBoatCheck.isActive == false)
+            {
+                waypointActivated = true;
+                waypointMark.RaceWaypoint();
+            }
+            else
+            {
+                waypointActivated = false;
+                waypointMark.RaceWaypoint();
+            }
 
             if (raceAllowed == true)
             {
@@ -59,7 +67,7 @@ public class PurpleBoatRacing : MonoBehaviour
                 raceIndicator.SetActive(true);
                 waypointActivated = false;
                 isActive = true;
-                waypointMark.PaintWaypoint();
+                waypointMark.RaceWaypoint();
                 if (reachedPoint == false)
                 {
                     transform.position = Vector3.MoveTowards(transform.position, raceGoal.transform.position, Time.deltaTime * raceSpeed);
@@ -115,14 +123,11 @@ public class PurpleBoatRacing : MonoBehaviour
             {
                 raceGoal.SetActive(false);
                 raceAllowed = false;
-                StartCoroutine(Lost());
+                isActive = false;
+                waypointActivated = false;
+                waypointMark.RaceWaypoint();
+                StartCoroutine("Lost");
             }
-        }
-
-        if (followBoatCheck.isActive == true || collectBoatCheck.isActive == true)
-        {
-            waypointActivated = false;
-            waypointMark.CollectBoatWaypoint();
         }
     }
 
@@ -137,19 +142,26 @@ public class PurpleBoatRacing : MonoBehaviour
     public IEnumerator Lost()
     {
         yield return new WaitForSeconds(0.1f);
-        //insert point for where boat should go when done
         if (Vector3.Distance(waypoints[current].transform.position, transform.position) < waypointRadius)
         {
             current++;
             if (current == waypoints.Length)
             {
-                StopCoroutine(Lost());
+                current = 0;
+                StopCoroutine("Lost");
+                finishedQuest = true;
             }
         }
-        transform.position = Vector3.MoveTowards(transform.position, waypoints[current].transform.position, Time.deltaTime * raceSpeed);
-        transform.rotation = Quaternion.Slerp(transform.rotation
-                , Quaternion.LookRotation(waypoints[current].transform.position - transform.position)
-                , raceTurnSpeed * Time.deltaTime);
+        if (finishedQuest == false)
+        {
+            if (Vector3.Distance(waypoints[current].transform.position, transform.position) > waypointRadius)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, waypoints[current].transform.position, Time.deltaTime * raceSpeed);
+                transform.rotation = Quaternion.Slerp(transform.rotation
+                        , Quaternion.LookRotation(waypoints[current].transform.position - transform.position)
+                        , raceTurnSpeed * Time.deltaTime);
+            }
+        }
     }
 
     public IEnumerator StartAgain()

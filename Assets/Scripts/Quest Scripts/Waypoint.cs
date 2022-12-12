@@ -32,43 +32,46 @@ public class Waypoint : MonoBehaviour
     {
         for (int i = 0; i < questObjects.Length; i++)
         {
-            questImage[i].enabled = true;
-            distanceToTarget[i].enabled = true;
-            float minX = questImage[i].GetPixelAdjustedRect().width / 2 * offset.x;
-            float maxX = Screen.width - minX;
-
-            float minY = questImage[i].GetPixelAdjustedRect().height / 2 * offset.y;
-            float maxY = Screen.width - minY;
-
-            Vector2 pos = cam.WorldToScreenPoint(targetPosition[i].position);
-
-            if (Vector3.Dot((targetPosition[i].position - transform.position), transform.forward) < 0)
+            if(collectBoat.cargoWaypointActivated == true)
             {
-                //Target is behind camera
-                if (pos.x < Screen.width / 2)
+                questImage[i].enabled = true;
+                distanceToTarget[i].enabled = true;
+                float minX = questImage[i].GetPixelAdjustedRect().width / 2 * offset.x;
+                float maxX = Screen.width - minX;
+
+                float minY = questImage[i].GetPixelAdjustedRect().height / 2 * offset.y;
+                float maxY = Screen.width - minY;
+
+                Vector2 pos = cam.WorldToScreenPoint(targetPosition[i].position);
+
+                if (Vector3.Dot((targetPosition[i].position - transform.position), transform.forward) < 0)
                 {
-                    pos.x = maxX;
+                    //Target is behind camera
+                    if (pos.x < Screen.width / 2)
+                    {
+                        pos.x = maxX;
+                    }
+                    else
+                    {
+                        pos.x = minX;
+                    }
                 }
-                else
+
+                pos.x = Mathf.Clamp(pos.x, minX, maxX);
+                pos.y = Mathf.Clamp(pos.y, minY, maxY);
+
+
+                questImage[i].transform.position = pos;
+                distanceToTarget[i].text = ((int)Vector3.Distance(targetPosition[i].position, transform.position)).ToString() + "m";
+
+
+                if (questObjects[i].hooked == true)
                 {
-                    pos.x = minX;
+                    questImage[i].enabled = false;
+                    distanceToTarget[i].enabled = false;
                 }
             }
-
-            pos.x = Mathf.Clamp(pos.x, minX, maxX);
-            pos.y = Mathf.Clamp(pos.y, minY, maxY);
-
-
-            questImage[i].transform.position = pos;
-            distanceToTarget[i].text = ((int)Vector3.Distance(targetPosition[i].position, transform.position)).ToString() + "m";
-
-
-            if (questObjects[i].hooked == true)
-            {
-                questImage[i].enabled = false;
-                distanceToTarget[i].enabled = false;
-            }
-        }
+        }            
     }
 
     public void RaceWaypoint()
@@ -120,7 +123,7 @@ public class Waypoint : MonoBehaviour
     {
         for (int i = 3; i < 4; i++)
         {
-            if (followBoat.waypointActivated == true)
+            if (followBoat.boatWaypointActivated == true)
             {
                 questImage[i].enabled = true;
                 distanceToTarget[i].enabled = true;
@@ -165,7 +168,7 @@ public class Waypoint : MonoBehaviour
     {
         for (int i = 4; i < 5; i++)
         {
-            if (collectBoat.waypointActivated == true)
+            if (collectBoat.boatWaypointActivated == true)
             {
                 questImage[i].enabled = true;
                 distanceToTarget[i].enabled = true;
@@ -211,6 +214,51 @@ public class Waypoint : MonoBehaviour
         for (int i = 5; i < 6; i++)
         {
             if (paintBoat.waypointActivated == true)
+            {
+                questImage[i].enabled = true;
+                distanceToTarget[i].enabled = true;
+                float minX = questImage[i].GetPixelAdjustedRect().width / 2 * offset.x;
+                float maxX = Screen.width - minX;
+
+                float minY = questImage[i].GetPixelAdjustedRect().height / 2 * offset.y;
+                float maxY = Screen.width - minY;
+
+                Vector2 pos = cam.WorldToScreenPoint(targetPosition[i].position);
+
+                if (Vector3.Dot((targetPosition[i].position - transform.position), transform.forward) < 0)
+                {
+                    //Target is behind camera
+                    if (pos.x < Screen.width / 2)
+                    {
+                        pos.x = maxX;
+                    }
+                    else
+                    {
+                        pos.x = minX;
+                    }
+                }
+
+                pos.x = Mathf.Clamp(pos.x, minX, maxX);
+                pos.y = Mathf.Clamp(pos.y, minY, maxY);
+
+
+                questImage[i].transform.position = pos;
+                distanceToTarget[i].text = ((int)Vector3.Distance(targetPosition[i].position, transform.position)).ToString() + "m";
+
+            }
+            else
+            {
+                questImage[i].enabled = false;
+                distanceToTarget[i].enabled = false;
+            }
+        }
+    }
+
+    public void RubbleWaypoint()
+    {
+        for (int i = 6; i < 7; i++)
+        {
+            if (followBoat.rubbleWaypointActivated == true)
             {
                 questImage[i].enabled = true;
                 distanceToTarget[i].enabled = true;

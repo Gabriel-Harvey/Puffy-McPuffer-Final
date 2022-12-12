@@ -19,7 +19,7 @@ public class BoatMovement : MonoBehaviour
     public bool wonRace = false;
     public PurpleBoatRacing race;
 
-    public GameObject rubble;
+    public GameObject[] rubble;
     public bool rubbleTriggered = false;
 
     [Header("Key Inputs")]
@@ -31,6 +31,11 @@ public class BoatMovement : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        for (int i = 0; i < rubble.Length; i++)
+        {
+            rubble[i].SetActive(false);
+        }
+        
     }
 
     private void Update()
@@ -124,7 +129,10 @@ public class BoatMovement : MonoBehaviour
             if(rubbleTriggered == false)
             {
                 rubbleTriggered = true;
-                rubble.SetActive(true);
+                for (int i = 0; i < rubble.Length; i++)
+                {
+                    rubble[i].SetActive(true);
+                }
             }
             
         }

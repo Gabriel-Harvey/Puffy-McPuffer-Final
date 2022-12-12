@@ -9,10 +9,13 @@ public class PaintQuest : MonoBehaviour
     public Collectables paintBoat;
     public GameObject paintBoatBody;
     public GameObject playerBoat;
+    public GameObject[] canalPartySetup;
     public Waypoint paintWaypoint;
+    public GameObject boat;
 
     public GameObject interactImage;
     public bool waypointActivated;
+    public FinishQuest gameComplete;
 
     [SerializeField]
     private KeyCode collectButton;
@@ -45,13 +48,33 @@ public class PaintQuest : MonoBehaviour
             {
                 GetComponent<DialogueTrigger>().TriggerDialogue();
                 isCollected = true;
+                boat.GetComponentInChildren<CameraAim>().Stored = false;
             }
         }
 
         if (isCollected == true)
         {
             interactImage.SetActive(false);
+            canalPartySetup[0].SetActive(false);
+            canalPartySetup[1].SetActive(true);
             Destroy(paintBoatBody);
         }
+
+    
+            if (gameComplete.rubbleCleared == true)
+            {
+                canalPartySetup[1].SetActive(false);
+                canalPartySetup[2].SetActive(true);
+
+                if (Vector3.Distance(transform.position, playerBoat.transform.position) < 150)
+                {
+                    interactImage.SetActive(true);
+                    if (Input.GetKeyDown(collectButton))
+                    {
+                        canalPartySetup[2].GetComponent<DialogueTrigger>().TriggerDialogue();
+                        interactImage.SetActive(false);
+                    }
+                }
+            }
     }
 }
