@@ -8,6 +8,8 @@ public class DialogueManager : MonoBehaviour
     public Text nameText;
     public Text dialogueText;
     public GameObject box;
+    public GameObject portraitPuffy;
+    public DialogueTrigger[] portrait;
 
     private Queue<string> sentences;
 
@@ -23,6 +25,15 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue)
     {
         box.SetActive(true);
+        portraitPuffy.SetActive(true);
+        for (int i = 0; i < portrait.Length; i++)
+        {
+            if (portrait[i].portraitCheck == true)
+            {
+                portrait[i].portrait.SetActive(true);
+            }
+        }
+        Time.timeScale = 0;
         Debug.Log("Starting Conversation with " + dialogue.name);
 
         nameText.text = dialogue.name;
@@ -64,6 +75,15 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
+        for (int i = 0; i < portrait.Length; i++)
+        {
+            if (portrait[i].portraitCheck == true)
+            {
+                portrait[i].portrait.SetActive(false);
+            }
+        }
+        portraitPuffy.SetActive(false);
+        Time.timeScale = 1;
         Debug.Log("End of conversation");
     }
 }

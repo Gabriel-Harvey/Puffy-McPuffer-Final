@@ -12,7 +12,7 @@ public class BoatMovement : MonoBehaviour
     [SerializeField] private float maxMoveSpeed;
 
     private bool moveForward = false;
-    private bool moveBackward = false;
+    public bool moveBackward = false;
     private bool turnLeft = false;
     private bool turnRight = false;
 
