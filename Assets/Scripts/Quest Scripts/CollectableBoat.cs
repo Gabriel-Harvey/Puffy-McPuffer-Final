@@ -106,6 +106,8 @@ public class CollectableBoat : MonoBehaviour
         {
             boatWaypointActivated = true;
             waypointMark.CollectBoatWaypoint();
+            cargoWaypointActivated = false;
+            waypointMark.CollectableWaypoints();
         }
 
         if (Vector3.Distance(transform.position, boat.transform.position) < 30 && interactedCollectibles == true)
@@ -131,8 +133,6 @@ public class CollectableBoat : MonoBehaviour
         {
             boatWaypointActivated = false;
             waypointMark.CollectBoatWaypoint();
-            cargoWaypointActivated = false;
-            waypointMark.CollectableWaypoints();
             StartCoroutine(GoToEnd());
         }
 
