@@ -20,10 +20,10 @@ public class PurpleBoatRacing : MonoBehaviour
     public bool finishedQuest = false;
     public bool startCounter = false;
     public bool checkpointPassed = false;
-    public bool waypointActivated;
+    public bool boatWaypointActivated;
+    public bool goalWaypointActivated;
     public bool isActive;
     public GameObject raceGoal;
-    public GameObject raceIndicator;
     public GameObject startPos;
     public GameObject[] waypoints;
     Vector3 velocityBoat;
@@ -41,7 +41,8 @@ public class PurpleBoatRacing : MonoBehaviour
     void Start()
     {
         // raceGoal.SetActive(false);
-        waypointActivated = false;
+        boatWaypointActivated = false;
+        goalWaypointActivated = false;
         isActive = false;
     }
 
@@ -52,22 +53,23 @@ public class PurpleBoatRacing : MonoBehaviour
         {
             if (followBoatCheck.isActive == false && collectBoatCheck.isActive == false)
             {
-                waypointActivated = true;
+                boatWaypointActivated = true;
                 waypointMark.RaceWaypoint();
             }
             else
             {
-                waypointActivated = false;
+                boatWaypointActivated = false;
                 waypointMark.RaceWaypoint();
             }
 
             if (raceAllowed == true)
             {
                 raceGoal.SetActive(true);
-                raceIndicator.SetActive(true);
-                waypointActivated = false;
+                boatWaypointActivated = false;
+                goalWaypointActivated = true;
                 isActive = true;
                 waypointMark.RaceWaypoint();
+                waypointMark.RaceGoalWaypoint();
                 if (reachedPoint == false)
                 {
                     transform.position = Vector3.MoveTowards(transform.position, raceGoal.transform.position, Time.deltaTime * raceSpeed);
@@ -110,13 +112,14 @@ public class PurpleBoatRacing : MonoBehaviour
             if (raceAllowed == true || Vector3.Distance(transform.position, transformPlayer.position) > 20)
             {
                 interactImage.SetActive(false);
-                waypointActivated = false;
+                boatWaypointActivated = false;
             }
 
             if (reachedPoint == true)
             {
                 raceGoal.SetActive(false);
-                raceIndicator.SetActive(false);
+                goalWaypointActivated = false;
+                waypointMark.RaceGoalWaypoint();
                 StartCoroutine(StartAgain());
             }
             if (playerRaceCondition.wonRace == true)
@@ -124,8 +127,10 @@ public class PurpleBoatRacing : MonoBehaviour
                 raceGoal.SetActive(false);
                 raceAllowed = false;
                 isActive = false;
-                waypointActivated = false;
+                boatWaypointActivated = false;
                 waypointMark.RaceWaypoint();
+                goalWaypointActivated = false;
+                waypointMark.RaceGoalWaypoint();
                 StartCoroutine("Lost");
             }
         }
@@ -178,7 +183,7 @@ public class PurpleBoatRacing : MonoBehaviour
             {
                 reachedPoint = false;
                 raceAllowed = false;
-                waypointActivated = false;
+                boatWaypointActivated = false;
                 transform.rotation = Quaternion.Slerp(transform.rotation
                     , Quaternion.LookRotation(raceGoal.transform.position - transform.position)
                     , raceTurnSpeed * Time.deltaTime);

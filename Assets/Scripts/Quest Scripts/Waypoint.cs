@@ -79,7 +79,7 @@ public class Waypoint : MonoBehaviour
     {
         for (int i = 2; i < 3; i++)
         {
-            if (raceBoat.waypointActivated == true)
+            if (raceBoat.boatWaypointActivated == true)
             {
                 questImage[i].enabled = true;
                 distanceToTarget[i].enabled = true;
@@ -260,6 +260,51 @@ public class Waypoint : MonoBehaviour
         for (int i = 6; i < 7; i++)
         {
             if (finishQuest.rubbleWaypointActivated == true)
+            {
+                questImage[i].enabled = true;
+                distanceToTarget[i].enabled = true;
+                float minX = questImage[i].GetPixelAdjustedRect().width / 2 * offset.x;
+                float maxX = Screen.width - minX;
+
+                float minY = questImage[i].GetPixelAdjustedRect().height / 2 * offset.y;
+                float maxY = Screen.width - minY;
+
+                Vector2 pos = cam.WorldToScreenPoint(targetPosition[i].position);
+
+                if (Vector3.Dot((targetPosition[i].position - transform.position), transform.forward) < 0)
+                {
+                    //Target is behind camera
+                    if (pos.x < Screen.width / 2)
+                    {
+                        pos.x = maxX;
+                    }
+                    else
+                    {
+                        pos.x = minX;
+                    }
+                }
+
+                pos.x = Mathf.Clamp(pos.x, minX, maxX);
+                pos.y = Mathf.Clamp(pos.y, minY, maxY);
+
+
+                questImage[i].transform.position = pos;
+                distanceToTarget[i].text = ((int)Vector3.Distance(targetPosition[i].position, transform.position)).ToString() + "m";
+
+            }
+            else
+            {
+                questImage[i].enabled = false;
+                distanceToTarget[i].enabled = false;
+            }
+        }
+    }
+
+    public void RaceGoalWaypoint()
+    {
+        for (int i = 7; i < 8; i++)
+        {
+            if (raceBoat.goalWaypointActivated == true)
             {
                 questImage[i].enabled = true;
                 distanceToTarget[i].enabled = true;
