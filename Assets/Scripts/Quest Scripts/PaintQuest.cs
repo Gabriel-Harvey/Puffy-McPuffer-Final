@@ -15,6 +15,7 @@ public class PaintQuest : MonoBehaviour
 
     public GameObject interactImage;
     public bool waypointActivated;
+    public bool quitGame = false; 
     public FinishQuest gameComplete;
 
     [SerializeField]
@@ -73,9 +74,21 @@ public class PaintQuest : MonoBehaviour
                     {
                         canalPartySetup[2].GetComponent<DialogueTrigger>().TriggerDialogue();
                         interactImage.SetActive(false);
-                        Application.Quit();
+                        quitGame = true;
                     }
                 }
             }
+
+        if (quitGame == true)
+        {
+            StartCoroutine(QuitGame());
+        }
+    }
+
+    IEnumerator QuitGame()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Application.Quit();
+        print("quit");
     }
 }
