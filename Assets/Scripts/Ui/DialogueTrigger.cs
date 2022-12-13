@@ -6,15 +6,12 @@ public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
     public GameObject portrait;
-    public bool portraitCheck = false;
+    public bool portraitCheck;
 
-    public void Update()
-    {
-        portraitCheck = false;
-    }
     public void TriggerDialogue()
     {
         portraitCheck = true;
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        portraitCheck = false;
     }
 }
