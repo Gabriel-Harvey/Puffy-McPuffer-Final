@@ -3593,8 +3593,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a8eda81bbbb644988677b670d062b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ambientBirds: {fileID: 0}
-  ambientWind: {fileID: 0}
   questObject: {fileID: 408744237}
 --- !u!114 &408744239
 MonoBehaviour:
@@ -3611,8 +3609,12 @@ MonoBehaviour:
   dialogue:
     name: Canal
     sentences:
-    - Puffer, if you fetch me some paint, then I can get ready for the party.
+    - "Hey there, I\u2019m the Caledonian canal, nice to meet ya! I\u2019m hosting
+      a big party, so scram! Everything must be perfect!"
+    - "Oh, you want through? I\u2019m so busy, I don\u2019t have time for this. "
     - I'll let you through once you've done that for me, if you please.
+    - "Well, I guess if you help me, I\u2019ll let you through. Can you grab me some
+      paint so I can dress up? I need to look my best!"
   portrait: {fileID: 969804517}
   portraitCheck: 0
 --- !u!4 &408744240
@@ -6281,6 +6283,21 @@ PrefabInstance:
     - target: {fileID: 4389996191443459156, guid: 42b06839877a24b46b551c40223e140c, type: 3}
       propertyPath: portraitCheck
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389996191443459156, guid: 42b06839877a24b46b551c40223e140c, type: 3}
+      propertyPath: dialogue.sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389996191443459156, guid: 42b06839877a24b46b551c40223e140c, type: 3}
+      propertyPath: dialogue.sentences.Array.data[0]
+      value: "Oh gosh, I\u2019ve gotten lost and now I\u2019ll be late to my friends
+        party! I said I\u2019d help her with the decorating, oh this is a disaster."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389996191443459156, guid: 42b06839877a24b46b551c40223e140c, type: 3}
+      propertyPath: dialogue.sentences.Array.data[1]
+      value: "You know my friend? Fantastic! Do you know how to get to her? Thank
+        you so much! Yeah, I\u2019d be able to help with the rubble. Show me the
+        way."
       objectReference: {fileID: 0}
     - target: {fileID: 4389996191443459164, guid: 42b06839877a24b46b551c40223e140c, type: 3}
       propertyPath: m_Name
@@ -10982,8 +10999,8 @@ MonoBehaviour:
   dialogue:
     name: Canal
     sentences:
-    - Thank you again, Puffy! Now, we can get this party started!
-    - I wish you could stay, but a promise is a promise. I'll let you through.
+    - "Thanks for all your help puffy, you\u2019re the best! I\u2019ll hold up my
+      end of the bargain and let you through now. Safe travels!"
   portrait: {fileID: 1951642315}
   portraitCheck: 0
 --- !u!1 &1167501863
@@ -12718,7 +12735,11 @@ MonoBehaviour:
   dialogue:
     name: Collectable Boat
     sentences:
-    - Can you help me find my cargo? It got displaced when the rubble hit...
+    - "Ugh, my cargo is missing! Now the party is ruined... Oh hey, I didn\u2019t
+      see you there."
+    - "You\u2019re a friend of the canal? Phew. Would you be able to help me find
+      my cargo? It went missing after that big crash and the party will be doomed
+      if I can\u2019t find it! Thank you for helping me pal."
   portrait: {fileID: 773165824}
   portraitCheck: 0
 --- !u!1001 &1406582811
@@ -17390,8 +17411,8 @@ MonoBehaviour:
   dialogue:
     name: Brown Boat
     sentences:
-    - Aw, you beat me...
-    - Alright, I'm a boat of my word. Besides, this party sounds fun.
+    - "Darn, you beat me. That was fun! I\u2019ll come help ya with the rubble now
+      and you can see how strong I am!"
   portrait: {fileID: 730630717}
   portraitCheck: 0
 --- !u!114 &1897466008
@@ -17743,6 +17764,10 @@ PrefabInstance:
     - target: {fileID: 5993392468797582786, guid: 3df6101b53aa6fa4a998f7fc5d349891, type: 3}
       propertyPath: portraitCheck
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5993392468797582786, guid: 3df6101b53aa6fa4a998f7fc5d349891, type: 3}
+      propertyPath: dialogue.sentences.Array.data[0]
+      value: Ha! I win! I can go all day! You're too slow!
       objectReference: {fileID: 0}
     - target: {fileID: 5993392468797582789, guid: 3df6101b53aa6fa4a998f7fc5d349891, type: 3}
       propertyPath: m_RootOrder
@@ -19282,9 +19307,15 @@ MonoBehaviour:
   dialogue:
     name: Canal
     sentences:
-    - Thank you, Puffy!... But now the canal to get here is blocked.
-    - Would you mind helping some boats out to help you clear the rubble? I'll help
-      you in return!
+    - Thanks a lot! Also, did you hear that big crash? Some rubble and rocks fell
+      and blocked off the path. How are my friends gonna make it now? Oh, this party
+      is gonna be a disaster.
+    - "You\u2019ll help? Thank you so much! Could you clear that path? I don\u2019t
+      think my friends will find their way to my party if their usual path has cargo
+      and boats everywhere."
+    - Make sure to keep an eye out for any boats in need of help, those rocks were
+      loud! And please keep an eye out for my friends, they might be able to help
+      clear the rocks. Thanks man.
   portrait: {fileID: 994120478}
   portraitCheck: 0
 --- !u!1001 &2102820766
@@ -19892,6 +19923,16 @@ PrefabInstance:
     - target: {fileID: 8146035300852854417, guid: 7b5f2e9c7d2912649a11b9806499728e, type: 3}
       propertyPath: portraitCheck
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8146035300852854417, guid: 7b5f2e9c7d2912649a11b9806499728e, type: 3}
+      propertyPath: dialogue.sentences.Array.data[0]
+      value: "Hey! You\u2019re a friend of the canal? Cool. Oh shoot, you need help
+        clearing rubble? Well, I\u2019m super strong so I can help! Only if you beat
+        me in a race though, I can\u2019t be helping some slowpoke!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8146035300852854417, guid: 7b5f2e9c7d2912649a11b9806499728e, type: 3}
+      propertyPath: dialogue.sentences.Array.data[1]
+      value: "I\u2019m warning you, I'm really fast!"
       objectReference: {fileID: 0}
     - target: {fileID: 8146035300852854418, guid: 7b5f2e9c7d2912649a11b9806499728e, type: 3}
       propertyPath: raceUI
