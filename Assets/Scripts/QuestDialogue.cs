@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class QuestDialogue : MonoBehaviour
 {
-
+    public AudioSource ambientBirds;
+    public AudioSource ambientWind;
     public GameObject questObject;
     // Start is called before the first frame update
     void Start()

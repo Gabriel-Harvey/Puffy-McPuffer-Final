@@ -28,6 +28,9 @@ public class BoatMovement : MonoBehaviour
     [SerializeField] private KeyCode rightKey;
     [SerializeField] private KeyCode leftKey;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource boatMovementAudio;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -49,9 +52,16 @@ public class BoatMovement : MonoBehaviour
         if (race.startCounter == false)
         {
             if (Input.GetKey(forwardKey))
+            {
                 moveForward = true;
+                boatMovementAudio.Play();
+            }
             else
+            {
                 moveForward = false;
+                boatMovementAudio.Stop();
+            }
+               
             if (Input.GetKey(backKey))
                 moveBackward = true;
             else
