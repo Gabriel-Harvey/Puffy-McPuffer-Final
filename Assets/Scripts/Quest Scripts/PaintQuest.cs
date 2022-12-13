@@ -88,7 +88,11 @@ public class PaintQuest : MonoBehaviour
     IEnumerator QuitGame()
     {
         yield return new WaitForSeconds(0.5f);
+#if UNITY_STANDALONE
         Application.Quit();
-        print("quit");
+#endif
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
 }
