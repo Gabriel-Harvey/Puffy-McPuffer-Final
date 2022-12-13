@@ -17,6 +17,8 @@ public class PaintQuest : MonoBehaviour
     public bool waypointActivated;
     public bool quitGame = false; 
     public FinishQuest gameComplete;
+    public GameObject winner;
+    public GameObject tint;
 
     [SerializeField]
     private KeyCode collectButton;
@@ -88,11 +90,7 @@ public class PaintQuest : MonoBehaviour
     IEnumerator QuitGame()
     {
         yield return new WaitForSeconds(0.5f);
-#if UNITY_STANDALONE
-        Application.Quit();
-#endif
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
+        tint.SetActive(true);
+        winner.SetActive(true);
     }
 }
