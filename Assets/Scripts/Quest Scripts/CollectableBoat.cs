@@ -34,6 +34,11 @@ public class CollectableBoat : MonoBehaviour
     [SerializeField]
     private KeyCode interactButton;
 
+    [Header("Cargo Activation")]
+    public GameObject cargo1;
+    public GameObject cargo2;
+    private bool isCargoActive;
+
     private void Start()
     {
         isActive = false;
