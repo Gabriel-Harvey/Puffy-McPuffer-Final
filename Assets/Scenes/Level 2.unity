@@ -3610,11 +3610,11 @@ MonoBehaviour:
     name: Canal
     sentences:
     - "Hey there, I\u2019m the Caledonian canal, nice to meet ya! I\u2019m hosting
-      a big party, so scram! Everything must be perfect!"
+      a big party, everything must be perfect, so scram! "
     - "Oh, you want through? I\u2019m so busy, I don\u2019t have time for this. "
-    - I'll let you through once you've done that for me, if you please.
     - "Well, I guess if you help me, I\u2019ll let you through. Can you grab me some
       paint so I can dress up? I need to look my best!"
+    - I'll let you through once you've done that for me, if you please.
   portrait: {fileID: 969804517}
   portraitCheck: 0
 --- !u!4 &408744240
@@ -17634,7 +17634,8 @@ MonoBehaviour:
   - {fileID: 1296079282}
   - {fileID: 781214450}
   cam: {fileID: 6707948935237199368}
-  offset: {x: 1, y: 8, z: 1}
+  offset: {x: 1, y: 14, z: 1}
+  transformPlayer: {fileID: 6707948935959248350}
   questObjects:
   - {fileID: 6843027419527527095}
   - {fileID: 2087175749}
