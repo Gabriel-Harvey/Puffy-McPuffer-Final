@@ -10,6 +10,11 @@ TagManager:
   - NearHookable
   - Harpoon
   - Collectable
+  - Checkpoint 1
+  - Point
+  - Checkpoint 2
+  - Rubble Trigger
+  - Goal
   layers:
   - Default
   - TransparentFX
@@ -19,7 +24,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Hookable
   - 
   - 
   - 

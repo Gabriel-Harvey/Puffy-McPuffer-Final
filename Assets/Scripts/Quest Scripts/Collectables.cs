@@ -10,11 +10,13 @@ public class Collectables : MonoBehaviour
     [SerializeField] public bool hooked;
     private float speed;
     [SerializeField] Harpoon harpoon;
+    [SerializeField] private CameraAim harpoonAim;
     [SerializeField] Transform lockPosition;
     [SerializeField] private bool locked;
     [SerializeField] private float rotateSpeed;
     public bool questScore;
     private SelectionManager selection;
+    
 
     [Header("Hooking onto Boat")]
     private float distance;
@@ -81,11 +83,12 @@ public class Collectables : MonoBehaviour
 
 
         //Selection Marker
-        if (selection.active == true)
+        if (harpoonAim.currentTarget != null)
         {
             selection.selectedMarker.SetActive(false);
         }
-        Destroy(selection);
+        gameObject.layer = default;
+        
 
         //Rigidbody
         Rigidbody RB = gameObject.GetComponent<Rigidbody>();

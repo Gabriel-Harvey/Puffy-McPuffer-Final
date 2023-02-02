@@ -7,7 +7,11 @@ public class CameraAim : MonoBehaviour
 
     [Header("Harpoon Aiming")]
     public Transform target;
-    public Transform DefaultTarget;
+    public Transform defaultTarget;
+    private Camera cam;
+    public float rayDistance;
+    public LayerMask layer;
+    public SelectionManager currentTarget;
 
     [Header("Firing")]
     public GameObject harpoonPrefab;
@@ -15,7 +19,6 @@ public class CameraAim : MonoBehaviour
     public Transform spawnPoint;
     public bool readyToFire = true;
     public float harpoonMaxDist;
-
 
     [Header("Harpoon Speed Values")]
     public float launchSpeed;
@@ -26,9 +29,6 @@ public class CameraAim : MonoBehaviour
     [SerializeField] private bool hit;
     public HarpoonBoatMovement movement;
 
-    //[Header("Rope")]
-    //private LineRenderer lr;
-
     [Header("Collectables")]
     public Transform collecionArea;
     public bool Stored;
@@ -37,7 +37,7 @@ public class CameraAim : MonoBehaviour
 
     private void Awake()
     {
-        //lr = GetComponent<LineRenderer>();
+        cam = Camera.main;
     }
 
 
@@ -61,15 +61,28 @@ public class CameraAim : MonoBehaviour
         }
         else
         {
-            transform.LookAt(new Vector3(DefaultTarget.position.x, transform.position.y, DefaultTarget.position.z));
+            transform.LookAt(new Vector3(defaultTarget.position.x, transform.position.y, defaultTarget.position.z));
         }
 
         
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
-        //DrawRope();
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, rayDistance, layer))
+        {
+            currentTarget = hitInfo.collider.GetComponent<SelectionManager>();
+            currentTarget.selectedMarker.SetActive(true);
+            target = hitInfo.collider.GetComponent<SelectionManager>().harpoonLockPos;
+        }
+        else if (currentTarget != null)
+        {
+            target = null;
+            currentTarget.selectedMarker.SetActive(false);
+            currentTarget = null;
+        }
     }
 
     public void Fire()
