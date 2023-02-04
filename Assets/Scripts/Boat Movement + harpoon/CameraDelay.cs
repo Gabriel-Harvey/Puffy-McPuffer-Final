@@ -6,6 +6,7 @@ public class CameraDelay : MonoBehaviour
 {
     public Transform player;
     public Transform behindBoat;
+    public Transform frontBoat;
     public Vector3 offset;
     public Vector3 lookOffset;
     public float turnSpeed = 0.5f;
@@ -22,8 +23,8 @@ public class CameraDelay : MonoBehaviour
         }
         else
         {
-            transform.position = Vector3.Lerp(transform.position, behindBoat.position, Time.deltaTime * -turnSpeed);
+            transform.position = Vector3.Lerp(transform.position, frontBoat.position, Time.deltaTime * turnSpeed);
         }
-        
+
     }
 }

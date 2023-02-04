@@ -34,10 +34,18 @@ public class Waypoint : MonoBehaviour
     {
         for (int i = 0; i < questObjects.Length; i++)
         {
-            if(collectBoat.cargoWaypointActivated == true && Vector3.Distance(questObjects[i].transform.position, transformPlayer.position) < 300)
+            if(collectBoat.cargoWaypointActivated == true)
             {
-                questImage[i].enabled = true;
-                distanceToTarget[i].enabled = true;
+                if (Vector3.Distance(questObjects[i].transform.position, transformPlayer.position) > 50)
+                {
+                    questImage[i].enabled = true;
+                    distanceToTarget[i].enabled = true;
+                }
+                else
+                {
+                    questImage[i].enabled = false;
+                    distanceToTarget[i].enabled = false;
+                }
                 float minX = questImage[i].GetPixelAdjustedRect().width / 2 * offset.x;
                 float maxX = Screen.width - minX;
 
@@ -49,13 +57,15 @@ public class Waypoint : MonoBehaviour
                 if (Vector3.Dot((targetPosition[i].position - transform.position), transform.forward) < 0)
                 {
                     //Target is behind camera
-                    if(pos.x < Screen.width / 2)
+                    if (pos.x < Screen.width / 2)
                     {
+                        pos.x = maxX;
                         questImage[i].enabled = false;
                         distanceToTarget[i].enabled = false;
                     }
                     else
                     {
+                        pos.x = minX;
                         questImage[i].enabled = true;
                         distanceToTarget[i].enabled = true;
                     }
@@ -82,10 +92,18 @@ public class Waypoint : MonoBehaviour
     {
         for (int i = 2; i < 3; i++)
         {
-            if (raceBoat.boatWaypointActivated == true && Vector3.Distance(raceBoat.transform.position, transformPlayer.position) < 300)
+            if (raceBoat.boatWaypointActivated == true)
             {
-                questImage[i].enabled = true;
-                distanceToTarget[i].enabled = true;
+                if (Vector3.Distance(raceBoat.transform.position, transformPlayer.position) > 50)
+                {
+                    questImage[i].enabled = true;
+                    distanceToTarget[i].enabled = true;
+                }
+                else
+                {
+                    questImage[i].enabled = false;
+                    distanceToTarget[i].enabled = false;
+                }
                 float minX = questImage[i].GetPixelAdjustedRect().width / 2 * offset.x;
                 float maxX = Screen.width - minX;
 
@@ -99,11 +117,13 @@ public class Waypoint : MonoBehaviour
                     //Target is behind camera
                     if (pos.x < Screen.width / 2)
                     {
+                        pos.x = maxX;
                         questImage[i].enabled = false;
                         distanceToTarget[i].enabled = false;
                     }
                     else
                     {
+                        pos.x = minX;
                         questImage[i].enabled = true;
                         distanceToTarget[i].enabled = true;
                     }
@@ -129,10 +149,18 @@ public class Waypoint : MonoBehaviour
     {
         for (int i = 3; i < 4; i++)
         {
-            if (followBoat.boatWaypointActivated == true && Vector3.Distance(followBoat.transform.position, transformPlayer.position) < 300)
+            if (followBoat.boatWaypointActivated == true)
             {
-                questImage[i].enabled = true;
-                distanceToTarget[i].enabled = true;
+                if (Vector3.Distance(followBoat.transform.position, transformPlayer.position) > 50)
+                {
+                    questImage[i].enabled = true;
+                    distanceToTarget[i].enabled = true;
+                }
+                else
+                {
+                    questImage[i].enabled = false;
+                    distanceToTarget[i].enabled = false;
+                }
                 float minX = questImage[i].GetPixelAdjustedRect().width / 2 * offset.x;
                 float maxX = Screen.width - minX;
 
@@ -146,11 +174,13 @@ public class Waypoint : MonoBehaviour
                     //Target is behind camera
                     if (pos.x < Screen.width / 2)
                     {
+                        pos.x = maxX;
                         questImage[i].enabled = false;
                         distanceToTarget[i].enabled = false;
                     }
                     else
                     {
+                        pos.x = minX;
                         questImage[i].enabled = true;
                         distanceToTarget[i].enabled = true;
                     }
@@ -176,10 +206,18 @@ public class Waypoint : MonoBehaviour
     {
         for (int i = 4; i < 5; i++)
         {
-            if (collectBoat.boatWaypointActivated == true && Vector3.Distance(collectBoat.transform.position, transformPlayer.position) < 300)
+            if (collectBoat.boatWaypointActivated == true)
             {
-                questImage[i].enabled = true;
-                distanceToTarget[i].enabled = true;
+                if (Vector3.Distance(collectBoat.transform.position, transformPlayer.position) > 50)
+                {
+                    questImage[i].enabled = true;
+                    distanceToTarget[i].enabled = true;
+                }
+                else
+                {
+                    questImage[i].enabled = false;
+                    distanceToTarget[i].enabled = false;
+                }
                 float minX = questImage[i].GetPixelAdjustedRect().width / 2 * offset.x;
                 float maxX = Screen.width - minX;
 
@@ -193,11 +231,13 @@ public class Waypoint : MonoBehaviour
                     //Target is behind camera
                     if (pos.x < Screen.width / 2)
                     {
+                        pos.x = maxX;
                         questImage[i].enabled = false;
                         distanceToTarget[i].enabled = false;
                     }
                     else
                     {
+                        pos.x = minX;
                         questImage[i].enabled = true;
                         distanceToTarget[i].enabled = true;
                     }
@@ -223,10 +263,19 @@ public class Waypoint : MonoBehaviour
     {
         for (int i = 5; i < 6; i++)
         {
-            if (paintBoat.waypointActivated == true && Vector3.Distance(paintBoat.transform.position, transformPlayer.position) < 300)
+            if (paintBoat.waypointActivated == true)
             {
-                questImage[i].enabled = true;
-                distanceToTarget[i].enabled = true;
+                if(Vector3.Distance(paintBoat.transform.position, transformPlayer.position) > 50)
+                {
+                    questImage[i].enabled = true;
+                    distanceToTarget[i].enabled = true;
+                }
+                else if (Vector3.Distance(paintBoat.transform.position, transformPlayer.position) < 50)
+                {
+                    questImage[i].enabled = false;
+                    distanceToTarget[i].enabled = false;
+                }
+                
                 float minX = questImage[i].GetPixelAdjustedRect().width / 2 * offset.x;
                 float maxX = Screen.width - minX;
 
@@ -240,11 +289,13 @@ public class Waypoint : MonoBehaviour
                     //Target is behind camera
                     if (pos.x < Screen.width / 2)
                     {
+                        pos.x = maxX;
                         questImage[i].enabled = false;
                         distanceToTarget[i].enabled = false;
                     }
                     else
                     {
+                        pos.x = minX;
                         questImage[i].enabled = true;
                         distanceToTarget[i].enabled = true;
                     }
@@ -287,11 +338,13 @@ public class Waypoint : MonoBehaviour
                     //Target is behind camera
                     if (pos.x < Screen.width / 2)
                     {
+                        pos.x = maxX;
                         questImage[i].enabled = false;
                         distanceToTarget[i].enabled = false;
                     }
                     else
                     {
+                        pos.x = minX;
                         questImage[i].enabled = true;
                         distanceToTarget[i].enabled = true;
                     }
@@ -317,10 +370,18 @@ public class Waypoint : MonoBehaviour
     {
         for (int i = 7; i < 8; i++)
         {
-            if (raceBoat.goalWaypointActivated == true && Vector3.Distance(questImage[i].transform.position, transformPlayer.position) < 500)
+            if (raceBoat.goalWaypointActivated == true)
             {
-                questImage[i].enabled = true;
-                distanceToTarget[i].enabled = true;
+                if (Vector3.Distance(raceBoat.transform.position, transformPlayer.position) > 50)
+                {
+                    questImage[i].enabled = true;
+                    distanceToTarget[i].enabled = true;
+                }
+                else
+                {
+                    questImage[i].enabled = false;
+                    distanceToTarget[i].enabled = false;
+                }
                 float minX = questImage[i].GetPixelAdjustedRect().width / 2 * offset.x;
                 float maxX = Screen.width - minX;
 
@@ -334,11 +395,13 @@ public class Waypoint : MonoBehaviour
                     //Target is behind camera
                     if (pos.x < Screen.width / 2)
                     {
+                        pos.x = maxX;
                         questImage[i].enabled = false;
                         distanceToTarget[i].enabled = false;
                     }
                     else
                     {
+                        pos.x = minX;
                         questImage[i].enabled = true;
                         distanceToTarget[i].enabled = true;
                     }
