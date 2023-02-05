@@ -44,15 +44,11 @@ public class PaintQuest : MonoBehaviour
             paintWaypoint.PaintWaypoint();
         }
 
-        if (paintBoat.questScore == true && Vector3.Distance(transform.position, playerBoat.transform.position) < 150)
+        if (paintBoat.questScore == true && Vector3.Distance(transform.position, playerBoat.transform.position) < 150 && isCollected == false)
         {
-            interactImage.SetActive(true);
-            if (Input.GetKeyDown(collectButton))
-            {
                 GetComponent<DialogueTrigger>().TriggerDialogue();
                 isCollected = true;
                 boat.GetComponentInChildren<CameraAim>().Stored = false;
-            }
         }
 
         if (isCollected == true)

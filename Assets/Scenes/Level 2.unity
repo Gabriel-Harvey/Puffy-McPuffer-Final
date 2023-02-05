@@ -3024,7 +3024,7 @@ Transform:
   - {fileID: 1867853123}
   - {fileID: 12508486}
   m_Father: {fileID: 6707948935959248350}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &345225417 stripped
 Transform:
@@ -11620,7 +11620,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6707948935959248350}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1247752062
 GameObject:
@@ -13128,12 +13128,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394076799}
   m_LocalRotation: {x: 0.072192214, y: -0.00037121522, z: 0.007818602, w: 0.99736005}
-  m_LocalPosition: {x: 0, y: 5.4000006, z: -18.200006}
+  m_LocalPosition: {x: -0.01, y: 5.4000006, z: -19.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6707948935959248350}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1400417610
 GameObject:
@@ -15337,6 +15337,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1648181843}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1656990540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1656990541}
+  m_Layer: 0
+  m_Name: Front Of Boat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1656990541
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656990540}
+  m_LocalRotation: {x: 0.072192214, y: -0.00037121522, z: 0.007818602, w: 0.99736005}
+  m_LocalPosition: {x: 0.73, y: 5.4000006, z: 13.27}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6707948935959248350}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1658891148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23517,7 +23548,7 @@ GameObject:
   - component: {fileID: 5993392470098425490}
   - component: {fileID: 5993392470098425491}
   m_Layer: 0
-  m_Name: Follow boat boundry check
+  m_Name: Follow boat boundary check
   m_TagString: Rubble Trigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24307,6 +24338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 6707948934615755495}
   behindBoat: {fileID: 1394076800}
+  frontBoat: {fileID: 1656990541}
   offset: {x: 0, y: 5, z: -20}
   lookOffset: {x: 0, y: 5, z: 0}
   turnSpeed: 1
@@ -24372,8 +24404,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnSpeed: 1.5
-  moveSpeed: 20
-  maxMoveSpeed: 25
+  moveSpeed: 25
+  maxMoveSpeed: 30
   moveBackward: 0
   wonRace: 0
   race: {fileID: 2130972105}
@@ -24423,6 +24455,7 @@ Transform:
   - {fileID: 6707948934926893530}
   - {fileID: 6707948936224995410}
   - {fileID: 6707948934615755495}
+  - {fileID: 1656990541}
   - {fileID: 1394076800}
   - {fileID: 1233787874}
   - {fileID: 6707948936431583365}
@@ -24604,7 +24637,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6707948935959248350}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &6721992598904927211
 Transform:

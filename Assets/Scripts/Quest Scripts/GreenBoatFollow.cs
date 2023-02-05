@@ -60,21 +60,17 @@ public class GreenBoatFollow : MonoBehaviour
                     }
                 }
             }
-            if (Vector3.Distance(transform.position, transformPlayer.position) < 20 && followAllowed == false)
+            if (Vector3.Distance(transform.position, transformPlayer.position) < 30 && followAllowed == false)
             {
-                interactImage.SetActive(true);
-                if (Input.GetKeyDown(followButton))
-                {
                     interactImage.SetActive(false);
                     GetComponent<DialogueTrigger>().TriggerDialogue();
                     followAllowed = true;
-                }
 
             }
-            if (Vector3.Distance(transform.position, transformPlayer.position) > 20 || followAllowed == true)
-            {
-                interactImage.SetActive(false);
-            }
+            //if (vector3.distance(transform.position, transformplayer.position) > 20 || followallowed == true)
+            //{
+            //    interactimage.setactive(false);
+            //}
         }
 
         if (reachedPoint == true)
