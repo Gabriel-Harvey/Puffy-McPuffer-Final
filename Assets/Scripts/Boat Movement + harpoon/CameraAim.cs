@@ -24,7 +24,6 @@ public class CameraAim : MonoBehaviour
     public float launchSpeed;
     public float returnSpeed;
 
-
     [Header("Moving Towards Harpoon")]
     [SerializeField] private bool hit;
     public HarpoonBoatMovement movement;
@@ -33,13 +32,10 @@ public class CameraAim : MonoBehaviour
     public Transform collecionArea;
     public bool Stored;
 
-
-
     private void Awake()
     {
         cam = Camera.main;
     }
-
 
     void Update()
     {
@@ -56,15 +52,12 @@ public class CameraAim : MonoBehaviour
 
         if (target != null)
         {
-            //transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
             transform.LookAt(target);
         }
         else
         {
             transform.LookAt(new Vector3(defaultTarget.position.x, transform.position.y, defaultTarget.position.z));
-        }
-
-        
+        }   
     }
 
     private void FixedUpdate()
@@ -84,37 +77,19 @@ public class CameraAim : MonoBehaviour
             currentTarget = null;
         }
     }
-
     public void Fire()
     {
         var harpoon = Instantiate(harpoonPrefab, spawnPoint.position, spawnPoint.rotation);
         harpoon.GetComponent<Rigidbody>().velocity = spawnPoint.forward * launchSpeed;
         currentHarpoon = harpoon;
     }
-
     public void HarpoonHit()
     {
         movement.Actived(currentHarpoon);
     }
-
-    /*void DrawRope()
-    {
-        if (readyToFire) return;
-
-        lr.positionCount = 2;
-        lr.SetPosition(0, spawnPoint.position);
-        lr.SetPosition(1, currentHarpoon.GetComponent<Harpoon>().ropePosition.position);
-
-
-    }*/
-
     public void HarpoonDead()
     {
-        readyToFire = true;
-        //lr.positionCount = 0;
+        readyToFire = true;    
         movement.moving = false;
     }
-    
-
-
 }
