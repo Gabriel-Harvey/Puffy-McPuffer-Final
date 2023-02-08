@@ -61,13 +61,13 @@ public class BoatMovement : MonoBehaviour
                 moveForward = false;
                 boatMovementAudio.Stop();
             }
-               
+
             if (Input.GetKey(backKey))
                 moveBackward = true;
             else
                 moveBackward = false;
         }
-        
+
         if (Input.GetKey(leftKey))
             turnLeft = true;
         else
@@ -131,7 +131,7 @@ public class BoatMovement : MonoBehaviour
                 GetComponent<DialogueTrigger>().TriggerDialogue();
                 wonRace = true;
             }
-           
+
         }
 
         if (other.tag == "Rubble Trigger")
@@ -145,6 +145,12 @@ public class BoatMovement : MonoBehaviour
                 }
             }
             
+        }
+
+        if (other.tag == "Bounce")
+        {
+            print("working");
+            _rb.AddForce(100 * (moveSpeed * transform.up), ForceMode.Acceleration);
         }
     }
 
