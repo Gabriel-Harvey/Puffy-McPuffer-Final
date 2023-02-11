@@ -5,6 +5,7 @@ using UnityEngine;
 public class BoatMovement : MonoBehaviour
 {
     private Rigidbody _rb;
+    public DialogueManager triggeredDialogue;
 
     [Header("Boat Properties")]
     [SerializeField] private float turnSpeed;
@@ -31,6 +32,9 @@ public class BoatMovement : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioSource boatMovementAudio;
 
+    [Header("Pause Menu")]
+    public GameObject pauseMenu;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -45,6 +49,7 @@ public class BoatMovement : MonoBehaviour
     {
         MyInput();
         CheckSpeed();
+        PauseMenu();
     }
 
     private void MyInput()
@@ -107,6 +112,25 @@ public class BoatMovement : MonoBehaviour
         {
             transform.Rotate(transform.up * turnSpeed);
         }    
+    }
+
+    void PauseMenu()
+    {
+
+        if (Input.GetKeyDown("escape") && triggeredDialogue.dialogueOn == false)
+        {
+            if (pauseMenu.activeSelf == true)
+            {
+                pauseMenu.SetActive(false);
+                Time.timeScale = 1;
+            }
+            else
+            {
+                pauseMenu.SetActive(true);
+                Time.timeScale = 0;
+            }
+        }
+
     }
 
     /// <summary>

@@ -20,6 +20,9 @@ public class BoatControls : MonoBehaviour
     [Header("Camera")]
     public bool cameraOn;
 
+    [Header("Pause Menu")]
+    public GameObject pauseMenu;
+
     private Transform cameraTransform;
     // Start is called before the first frame update
     void Start()
@@ -101,6 +104,18 @@ public class BoatControls : MonoBehaviour
         {
             cameraTransform.position = transform.position + transform.rotation * new Vector3(0, cameraHeight, -cameraDistanceFromPlayer);
             cameraTransform.rotation = Quaternion.LookRotation(transform.position - cameraTransform.position);
+        }
+
+        if (Input.GetKey("p"))
+        {
+            if (pauseMenu.activeSelf == true)
+            {
+                pauseMenu.SetActive(false);
+            }
+            else
+            {
+                pauseMenu.SetActive(true);
+            }
         }
 
     }
