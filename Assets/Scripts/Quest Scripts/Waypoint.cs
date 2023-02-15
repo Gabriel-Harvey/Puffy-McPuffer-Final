@@ -17,6 +17,7 @@ public class Waypoint : MonoBehaviour
     public CollectableBoat collectBoat;
     public PaintQuest paintBoat;
     public FinishQuest finishQuest;
+    public GameObject raceGoal;
 
     // Start is called before the first frame update
     void Start()
@@ -372,12 +373,12 @@ public class Waypoint : MonoBehaviour
         {
             if (raceBoat.goalWaypointActivated == true)
             {
-                if (Vector3.Distance(raceBoat.transform.position, transformPlayer.position) > 50)
+                if (Vector3.Distance(raceGoal.transform.position, transformPlayer.position) > 50)
                 {
                     questImage[i].enabled = true;
                     distanceToTarget[i].enabled = true;
                 }
-                else
+                else if (Vector3.Distance(raceGoal.transform.position, transformPlayer.position) < 50)
                 {
                     questImage[i].enabled = false;
                     distanceToTarget[i].enabled = false;

@@ -26,6 +26,7 @@ public class PurpleBoatRacing : MonoBehaviour
     public GameObject raceGoal;
     public GameObject startPos;
     public GameObject[] waypoints;
+    public GameObject[] raceColliders;
     Vector3 velocityBoat;
 
     [SerializeField]
@@ -78,6 +79,21 @@ public class PurpleBoatRacing : MonoBehaviour
                     , raceTurnSpeed * Time.deltaTime);
                 }
             }
+
+            if (isActive == true)
+            {
+                for (int i = 0; i < raceColliders.Length; i++)
+                {
+                    raceColliders[i].SetActive(true);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < raceColliders.Length; i++)
+                {
+                    raceColliders[i].SetActive(false);
+                }
+            }
             
             if (raceAllowed == false && Vector3.Distance(transform.position, transformPlayer.position) < 20)
             {
@@ -86,6 +102,10 @@ public class PurpleBoatRacing : MonoBehaviour
                     interactImage.SetActive(true);
                     if (Input.GetKeyDown(raceButton))
                     {
+                        gameObject.transform.position = new Vector3(-390, 25, 260);
+                        gameObject.transform.eulerAngles = new Vector3(0, 115, 0);
+                        transformPlayer.position = new Vector3(-406, 25, 240);
+                        transformPlayer.eulerAngles = new Vector3(0, 110, 0);
                         startCounter = true;
 
                         interactImage.SetActive(false);

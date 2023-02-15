@@ -71,16 +71,17 @@ public class BoatMovement : MonoBehaviour
                 moveBackward = true;
             else
                 moveBackward = false;
-        }
 
-        if (Input.GetKey(leftKey))
-            turnLeft = true;
-        else
-            turnLeft = false;
-        if (Input.GetKey(rightKey))
-            turnRight = true;
-        else
-            turnRight = false;
+
+            if (Input.GetKey(leftKey))
+                turnLeft = true;
+            else
+                turnLeft = false;
+            if (Input.GetKey(rightKey))
+                turnRight = true;
+            else
+                turnRight = false;
+        }
     }
 
     private void FixedUpdate()
