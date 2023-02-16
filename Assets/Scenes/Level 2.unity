@@ -17683,6 +17683,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FinalTerrain
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c79fb8732f5d94844ab7613eb398ef70, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c79fb8732f5d94844ab7613eb398ef70, type: 3}
 --- !u!4 &1635648137 stripped
@@ -27471,7 +27475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   defaultTarget: {fileID: 6707948936431583365}
-  rayDistance: 100
+  rayDistance: 140
   layer:
     serializedVersion: 2
     m_Bits: 256
@@ -27480,7 +27484,7 @@ MonoBehaviour:
   currentHarpoon: {fileID: 0}
   spawnPoint: {fileID: 6707948936291716533}
   readyToFire: 1
-  harpoonMaxDist: 80
+  harpoonMaxDist: 120
   launchSpeed: 100
   returnSpeed: 60
   hit: 0
@@ -27702,6 +27706,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   harpoon: {fileID: 3016704377951521041, guid: e9e6919b15f5c6f4494cd446ddc54761, type: 3}
   speed: 30
+  pullSpeed: 0.5
+  maxMoveSpeed: 100
   moving: 0
   rotateSpeed: 0
   rb: {fileID: 6707948935959248337}

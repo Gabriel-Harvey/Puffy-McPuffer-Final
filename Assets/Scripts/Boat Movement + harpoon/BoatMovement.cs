@@ -12,6 +12,7 @@ public class BoatMovement : MonoBehaviour
     public float moveSpeed;
     [SerializeField] private float maxMoveSpeed;
 
+    [Header("Key Checks")]
     private bool moveForward = false;
     public bool moveBackward = false;
     private bool turnLeft = false;
@@ -49,8 +50,10 @@ public class BoatMovement : MonoBehaviour
     private void Update()
     {
         MyInput();
-        CheckSpeed();
+        //CheckSpeed();
         PauseMenu();
+
+        _rb.velocity = Vector3.ClampMagnitude(_rb.velocity, maxMoveSpeed);
     }
 
     private void MyInput()

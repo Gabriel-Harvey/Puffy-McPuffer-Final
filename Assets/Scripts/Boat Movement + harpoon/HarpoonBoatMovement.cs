@@ -1,5 +1,6 @@
 
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class HarpoonBoatMovement : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private GameObject harpoon;
     [SerializeField] private float speed;
+    [SerializeField] private float pullSpeed;
+    [SerializeField] private float maxMoveSpeed;
     public bool moving;
     public float rotateSpeed = 5f;
     public Rigidbody rb;
@@ -26,8 +29,11 @@ public class HarpoonBoatMovement : MonoBehaviour
         if (moving == true) //Moving towards target.
         {
             Vector3 target = new Vector3(harpoon.transform.position.x, transform.position.y , harpoon.transform.position.z);
-            transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime); //*harpoon.transform.position
-            //rb.AddForce(transform.forward * speed, ForceMode.Impulse);
+            //transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime); //*harpoon.transform.position
+            Vector3 direction = target - transform.position;
+            rb.AddForce(direction/100 * pullSpeed, ForceMode.Impulse);
+
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxMoveSpeed);
 
 
             var targetRotation = Quaternion.LookRotation(target - transform.position);
