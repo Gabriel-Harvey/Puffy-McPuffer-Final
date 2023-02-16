@@ -50,10 +50,8 @@ public class BoatMovement : MonoBehaviour
     private void Update()
     {
         MyInput();
-        //CheckSpeed();
+        CheckSpeed();
         PauseMenu();
-
-        
     }
 
     private void MyInput()
