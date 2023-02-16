@@ -53,7 +53,7 @@ public class BoatMovement : MonoBehaviour
         //CheckSpeed();
         PauseMenu();
 
-        _rb.velocity = Vector3.ClampMagnitude(_rb.velocity, maxMoveSpeed);
+        
     }
 
     private void MyInput()
@@ -151,10 +151,12 @@ public class BoatMovement : MonoBehaviour
     /// </summary>
     private void CheckSpeed()
     {
-        if (_rb.velocity.magnitude > maxMoveSpeed && moveForward)
+        _rb.velocity = Vector3.ClampMagnitude(_rb.velocity, maxMoveSpeed);
+
+        /*if (_rb.velocity.magnitude > maxMoveSpeed && moveForward)
             _rb.velocity = transform.forward * maxMoveSpeed;
         else if (_rb.velocity.magnitude > maxMoveSpeed && moveBackward)
-            _rb.velocity = -transform.forward * maxMoveSpeed;
+            _rb.velocity = -transform.forward * maxMoveSpeed;*/
     }
 
     void OnTriggerEnter(Collider other)
