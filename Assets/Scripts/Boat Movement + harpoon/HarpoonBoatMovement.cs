@@ -11,6 +11,7 @@ public class HarpoonBoatMovement : MonoBehaviour
     [SerializeField] private float speed;
     public bool moving;
     public float rotateSpeed = 5f;
+    public Rigidbody rb;
 
     [Header("Collider Management")]
     public CameraAim cameraAim;
@@ -22,10 +23,11 @@ public class HarpoonBoatMovement : MonoBehaviour
 
     void Update()
     {
-        if (moving == true)
+        if (moving == true) //Moving towards target.
         {
             Vector3 target = new Vector3(harpoon.transform.position.x, transform.position.y , harpoon.transform.position.z);
             transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime); //*harpoon.transform.position
+            //rb.AddForce(transform.forward * speed, ForceMode.Impulse);
 
 
             var targetRotation = Quaternion.LookRotation(target - transform.position);

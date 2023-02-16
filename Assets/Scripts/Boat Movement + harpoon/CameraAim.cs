@@ -64,6 +64,7 @@ public class CameraAim : MonoBehaviour
     {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
+        //Raycast checking for valid objects.
         if (Physics.Raycast(ray, out RaycastHit hitInfo, rayDistance, layer))
         {
             currentTarget = hitInfo.collider.GetComponent<SelectionManager>();

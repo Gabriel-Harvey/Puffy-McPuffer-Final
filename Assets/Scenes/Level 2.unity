@@ -27704,6 +27704,7 @@ MonoBehaviour:
   speed: 30
   moving: 0
   rotateSpeed: 0
+  rb: {fileID: 6707948935959248337}
   cameraAim: {fileID: 6707948934926893533}
   radius: 2.75
   height: 10.58
@@ -27765,6 +27766,7 @@ MonoBehaviour:
   leftKey: 97
   boatMovementAudio: {fileID: 1864592954}
   pauseMenu: {fileID: 1143262310}
+  optionsMenu: {fileID: 1209524533}
 --- !u!1 &6707948935959248349
 GameObject:
   m_ObjectHideFlags: 0

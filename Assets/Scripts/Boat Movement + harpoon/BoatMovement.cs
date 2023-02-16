@@ -34,6 +34,7 @@ public class BoatMovement : MonoBehaviour
 
     [Header("Pause Menu")]
     public GameObject pauseMenu;
+    public GameObject optionsMenu;
 
     private void Awake()
     {
@@ -117,21 +118,27 @@ public class BoatMovement : MonoBehaviour
 
     void PauseMenu()
     {
-
         if (Input.GetKeyDown("escape") && triggeredDialogue.dialogueOn == false)
         {
-            if (pauseMenu.activeSelf == true)
-            {
+            if (pauseMenu.activeSelf == true) //Unpause.
+            {              
                 pauseMenu.SetActive(false);
                 Time.timeScale = 1;
             }
             else
             {
-                pauseMenu.SetActive(true);
-                Time.timeScale = 0;
+                if (optionsMenu.activeSelf == true) //Pause menu closes form options menu.
+                {
+                    optionsMenu.SetActive(false);
+                    Time.timeScale = 1;
+                }
+                else
+                {
+                    pauseMenu.SetActive(true);
+                    Time.timeScale = 0;
+                }           
             }
         }
-
     }
 
     /// <summary>
