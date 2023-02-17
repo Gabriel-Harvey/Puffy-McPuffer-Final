@@ -18,7 +18,8 @@ public class LevelSelectUI : MonoBehaviour
     public void Awake()
     {
         currentPlayButton = startButtons[0];
-        Cursor.lockState = CursorLockMode.Confined; 
+        Cursor.lockState = CursorLockMode.Confined;
+        Time.timeScale = 1;
     }
 
     public void ButtonPresed(int button)
