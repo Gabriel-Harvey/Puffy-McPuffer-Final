@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelSelectBoatMovement : MonoBehaviour
 {
     [Header("Locating Target")]
-    [SerializeField] private int currentLocation;
+    public int currentLocation;
     [SerializeField] private int currentTarget;
     [SerializeField] private int tempTarget;
     [SerializeField] private int lastHit;
@@ -82,10 +82,12 @@ public class LevelSelectBoatMovement : MonoBehaviour
         if (currentTarget == currentLocation) //At location so stay.
         {
             Debug.Log("At location");
+            
         }
         else if (currentTarget != currentLocation) //Not at location so move.
         {
             ui.DisableButtons();
+            //ui.disableStartButtons();
 
             if (currentTarget > currentLocation) //Fowards
             {

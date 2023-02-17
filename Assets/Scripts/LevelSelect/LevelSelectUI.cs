@@ -7,33 +7,38 @@ using UnityEngine.UI;
 public class LevelSelectUI : MonoBehaviour
 {
     [Header("Button Identifing")]
-    public GameObject startButton;
     public Button[] buttons;
-    private bool buttonPressed;
+    private GameObject currentPlayButton;
     private int i;
 
     [Header("Comunicating With Boat")]
     public LevelSelectBoatMovement boat;
+    public GameObject[] startButtons;
 
-    public void Update()
+    public void Awake()
     {
-        if (buttonPressed)
-        {
-            startButton.SetActive(false);
-        }
+        currentPlayButton = startButtons[0];
+        Cursor.lockState = CursorLockMode.Confined; 
     }
 
     public void ButtonPresed(int button)
     {
         boat.setTarget(button);
-        buttonPressed = true;
     }
 
     public void DisableButtons()
     {
+        //Disables level buttons.
         for(i = 0; i < buttons.Length; i++)
         {
             buttons[i].interactable = false;
+        }
+
+        //Disables start buttons.
+        for (i = 0; i < startButtons.Length; i++)
+        {
+            if (startButtons[i].activeSelf == true)
+                startButtons[i].SetActive(false);
         }
     }
 
@@ -43,7 +48,30 @@ public class LevelSelectUI : MonoBehaviour
         {
             buttons[i].interactable = true;
         }
+
+        switch(boat.currentLocation)
+        {
+            case 0:
+                Debug.Log("Level 1");
+                startButtons[0].SetActive(true);
+                currentPlayButton = startButtons[0];
+                break;
+
+            case 2:
+                Debug.Log("Level 2");
+                startButtons[1].SetActive(true);
+                break;
+
+            case 4:
+                Debug.Log("Level 3");
+                startButtons[2].SetActive(true);
+                break;
+
+        }
     }
 
-
+    public void MenuButtonPressed(string name)
+    {
+        SceneManager.LoadScene(name);
+    }
 }
