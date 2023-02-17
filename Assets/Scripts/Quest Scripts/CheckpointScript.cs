@@ -11,6 +11,7 @@ public class CheckpointScript : MonoBehaviour
         if (other.tag == "PlayerBoat")
         {
             checkpointArray.PlayerThroughCheckpointTransform(this);
+            gameObject.SetActive(false);
         }
     }
 
